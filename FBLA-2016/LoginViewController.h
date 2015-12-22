@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlidingViewController.h"
 
-@interface FirstViewController : UIViewController
+@interface LoginViewController : UIViewController<SlidingViewDelegate>
 
 
 @end
