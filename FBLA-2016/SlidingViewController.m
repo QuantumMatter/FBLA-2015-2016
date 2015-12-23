@@ -104,6 +104,7 @@
     for (int i = 0; i < [views count]; i++) {
         UIView *view = [views objectAtIndex:i];
         view.frame = rightFrame;
+        view.layer.zPosition = 20;
         [self addSubview:view];
     }
     [UIView animateWithDuration:1.0f animations:^{

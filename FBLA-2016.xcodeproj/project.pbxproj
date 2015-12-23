@@ -18,6 +18,10 @@
 		ED7EB0501C289444004BAF7A /* FBLA_2016UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB04F1C289444004BAF7A /* FBLA_2016UITests.m */; };
 		ED7EB0601C289AE6004BAF7A /* SlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB05F1C289AE6004BAF7A /* SlidingViewController.m */; };
 		ED7EB0621C289AF8004BAF7A /* SlidingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB0611C289AF8004BAF7A /* SlidingView.xib */; };
+		ED7EB0651C28D496004BAF7A /* IntroViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB0641C28D496004BAF7A /* IntroViews.xib */; };
+		ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0671C28D4EA004BAF7A /* IntroViewController.m */; };
+		ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */; };
+		ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,12 @@
 		ED7EB05E1C289AE6004BAF7A /* SlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingViewController.h; sourceTree = "<group>"; };
 		ED7EB05F1C289AE6004BAF7A /* SlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingViewController.m; sourceTree = "<group>"; };
 		ED7EB0611C289AF8004BAF7A /* SlidingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlidingView.xib; sourceTree = "<group>"; };
+		ED7EB0641C28D496004BAF7A /* IntroViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViews.xib; sourceTree = "<group>"; };
+		ED7EB0661C28D4EA004BAF7A /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		ED7EB0671C28D4EA004BAF7A /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		ED7EB06A1C28D7C4004BAF7A /* SignInMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInMenuView.h; sourceTree = "<group>"; };
+		ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInMenuView.m; sourceTree = "<group>"; };
+		ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInMenuView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +119,7 @@
 		ED7EB0261C289442004BAF7A /* FBLA-2016 */ = {
 			isa = PBXGroup;
 			children = (
+				ED7EB0631C28D475004BAF7A /* IntroViews */,
 				ED7EB05D1C289AB2004BAF7A /* SlidingViewController */,
 				ED7EB02A1C289442004BAF7A /* AppDelegate.h */,
 				ED7EB02B1C289442004BAF7A /* AppDelegate.m */,
@@ -159,6 +170,27 @@
 				ED7EB0611C289AF8004BAF7A /* SlidingView.xib */,
 			);
 			name = SlidingViewController;
+			sourceTree = "<group>";
+		};
+		ED7EB0631C28D475004BAF7A /* IntroViews */ = {
+			isa = PBXGroup;
+			children = (
+				ED7EB0691C28D739004BAF7A /* Sign In Menu */,
+				ED7EB0641C28D496004BAF7A /* IntroViews.xib */,
+				ED7EB0661C28D4EA004BAF7A /* IntroViewController.h */,
+				ED7EB0671C28D4EA004BAF7A /* IntroViewController.m */,
+			);
+			name = IntroViews;
+			sourceTree = "<group>";
+		};
+		ED7EB0691C28D739004BAF7A /* Sign In Menu */ = {
+			isa = PBXGroup;
+			children = (
+				ED7EB06A1C28D7C4004BAF7A /* SignInMenuView.h */,
+				ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */,
+				ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */,
+			);
+			name = "Sign In Menu";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +300,9 @@
 				ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */,
 				ED7EB0621C289AF8004BAF7A /* SlidingView.xib in Resources */,
 				ED7EB0371C289443004BAF7A /* Assets.xcassets in Resources */,
+				ED7EB0651C28D496004BAF7A /* IntroViews.xib in Resources */,
 				ED7EB0351C289443004BAF7A /* Main.storyboard in Resources */,
+				ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +328,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED7EB0321C289442004BAF7A /* RegisterViewController.m in Sources */,
+				ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */,
+				ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */,
 				ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */,
 				ED7EB02F1C289442004BAF7A /* LoginViewController.m in Sources */,
 				ED7EB0291C289442004BAF7A /* main.m in Sources */,
