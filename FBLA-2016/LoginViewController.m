@@ -17,12 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //Run BG Task Here
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            //Return to main thread to update UI
+        });
+    });*/
+    
     // Do any additional setup after loading the view, typically from a nib.
-    SlidingViewController *sliding = [[SlidingViewController alloc] initWithFrame:CGRectMake(0, 0, 375, 375) andDelegate:self];
+    /*SlidingViewController *sliding = [[SlidingViewController alloc] initWithFrame:CGRectMake(0, 0, 375, 375) andDelegate:self];
     [self.view addSubview:sliding];
     
     UIPanGestureRecognizer *tap = [[UIPanGestureRecognizer alloc] initWithTarget:sliding action:@selector(swiped:)];
-    [self.view addGestureRecognizer:tap];
+    [self.view addGestureRecognizer:tap];*/
 }
 
 -(void) recognized:(UISwipeGestureRecognizer *)recog {
