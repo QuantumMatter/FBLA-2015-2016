@@ -8,7 +8,10 @@
 
 #import "UserModel.h"
 
-@implementation UserModel
+@implementation UserModel {
+    NSURLConnection *imageConn;
+    NSURLConnection *modelConn;
+}
 
 @synthesize delegate;
 
@@ -30,10 +33,40 @@
 @synthesize followers;
 @synthesize following;
 
--(id) initWithProfileSrc:(NSString *)profileSrc andFirstName:(NSString *)fName andLastName:(NSString *)lName {
+@synthesize gender;
+
+#define kIDKey              @"ID"
+
+#define kProfilePicSrcKey   @"ProfilePicture"
+
+#define kFirstNameKey       @"FirstName"
+#define kLastNameKey        @"LastName"
+#define kEmailKey           @"Email"
+
+#define kLongitudeKey       @"Longitude"
+#define kLatitudeKey        @"Latitude"
+
+#define kZipCodeKey         @"ZipCode"
+
+#define kFollowersKey       @"Followers"
+#define kFollowingKey       @"Following"
+
+#define kGenderKey          @"Gender"
+
+-(id) initWithCoder:(NSCoder *)decoder {
+    ID = [decoder decodeIntegerForKey:kIDKey];
+    self = [self initWithID:ID];
+    return self;
+}
+
+-(void) encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeInteger:ID forKey:kIDKey];
+}
+
+-(id) initWithID:(NSInteger)_ID {
     self = [super init];
     
-    profilePicSrc = profileSrc;
+    /*profilePicSrc = profileSrc;
     firstName = fName;
     lastName = lName;
     profilePic = [UIImage imageNamed:@"default.png"];
@@ -45,7 +78,7 @@
             
             //Return to main thread to update UI
         });
-    });
+    });*/
     return self;
 }
 
@@ -105,6 +138,37 @@
                        [delegate zipFound:self];
                        
                    }];
+}
+
+-(void) pushToServer {
+    [self pushImage];
+}
+
+-(void) pushImage {
+    
+}
+
+-(void) pushModel {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://24.8.58.134/FBLA2016/API/UsersAPI"]];
+    if (ID == -1) {
+        [request setHTTPMethod:@"POST"];
+    } else {
+        [request setHTTPMethod:@"PUT"];
+    }
+}
+
+-(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    if (connection == imageConn) {
+        NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        profilePicSrc = response;
+        NSLog(response);
+        [delegate user:self receivedNewID:-1];
+        [self pushModel];
+    } else if (connection == modelConn) {
+        NSLog(@"Connection Complete");
+        NSString *resposne = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(resposne);
+    }
 }
 
 @end

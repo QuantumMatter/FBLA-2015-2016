@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "UserModel.h"
+#import "ProfilePanelView.h"
 
-@interface FindFriendsView : UIView <CLLocationManagerDelegate, UserModelDelegate, UITextFieldDelegate>
+@interface FindFriendsView : UIView <CLLocationManagerDelegate, UserModelDelegate, UITextFieldDelegate, ProfilePanelDelegate>
 
 @property UIScrollView *scrollView;
 
@@ -24,6 +25,10 @@
 @property UILabel *emailTitle;
 @property UITextField *emailField;
 @property UIScrollView *emailScroll;
+
+@property NSMutableArray *nFriends;
+
+@property CLLocation *location;
 
 -(id) initWithFrame:(CGRect)frame;
 

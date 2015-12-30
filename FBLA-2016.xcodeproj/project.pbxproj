@@ -20,6 +20,14 @@
 		ED0EFE911C3327F900C9B600 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE901C3327F900C9B600 /* UserModel.m */; };
 		ED0EFE931C332A1E00C9B600 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0EFE921C332A1E00C9B600 /* default.png */; };
 		ED0EFE971C33787E00C9B600 /* PopularPeopleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE961C33787D00C9B600 /* PopularPeopleView.m */; };
+		ED0F41201C347E3500570703 /* FriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F411F1C347E3500570703 /* FriendModel.m */; };
+		ED0F41231C34821000570703 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F41221C34821000570703 /* SignInViewController.m */; };
+		ED0F41261C348DA900570703 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F41251C348DA900570703 /* DBManager.m */; };
+		ED0F41281C348E0300570703 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0F41271C348E0300570703 /* libsqlite3.tbd */; };
+		ED0F412D1C349CD200570703 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F412C1C349CD200570703 /* FeedViewController.m */; };
+		ED0F41301C349D7000570703 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F412F1C349D7000570703 /* MapViewController.m */; };
+		ED0F41331C349D7E00570703 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F41321C349D7E00570703 /* PostViewController.m */; };
+		ED0F41361C349D8800570703 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F41351C349D8800570703 /* MeViewController.m */; };
 		ED43A7011C31B857008C2C79 /* SaveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED43A7001C31B857008C2C79 /* SaveTest.m */; };
 		ED7EB0291C289442004BAF7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0281C289442004BAF7A /* main.m */; };
 		ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB02B1C289442004BAF7A /* AppDelegate.m */; };
@@ -77,6 +85,21 @@
 		ED0EFE921C332A1E00C9B600 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		ED0EFE951C33787D00C9B600 /* PopularPeopleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularPeopleView.h; sourceTree = "<group>"; };
 		ED0EFE961C33787D00C9B600 /* PopularPeopleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularPeopleView.m; sourceTree = "<group>"; };
+		ED0F411E1C347E3500570703 /* FriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendModel.h; sourceTree = "<group>"; };
+		ED0F411F1C347E3500570703 /* FriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendModel.m; sourceTree = "<group>"; };
+		ED0F41211C34821000570703 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		ED0F41221C34821000570703 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		ED0F41241C348DA900570703 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		ED0F41251C348DA900570703 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		ED0F41271C348E0300570703 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		ED0F412B1C349CD200570703 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		ED0F412C1C349CD200570703 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		ED0F412E1C349D7000570703 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ED0F412F1C349D7000570703 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ED0F41311C349D7E00570703 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		ED0F41321C349D7E00570703 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		ED0F41341C349D8700570703 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		ED0F41351C349D8800570703 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		ED43A6FF1C31B856008C2C79 /* SaveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTest.h; sourceTree = "<group>"; };
 		ED43A7001C31B857008C2C79 /* SaveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTest.m; sourceTree = "<group>"; };
 		ED7EB0241C289442004BAF7A /* FBLA-2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FBLA-2016.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0F41281C348E0300570703 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,12 +160,15 @@
 		ED0EFE721C323B2F00C9B600 /* Testing View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED7EB0331C289443004BAF7A /* Testing.storyboard */,
 				ED7EB02D1C289442004BAF7A /* LoginViewController.h */,
 				ED7EB02E1C289442004BAF7A /* LoginViewController.m */,
 				ED7EB0301C289442004BAF7A /* RegisterViewController.h */,
 				ED7EB0311C289442004BAF7A /* RegisterViewController.m */,
 				ED0EFE6F1C31F34400C9B600 /* SaveViewController.h */,
 				ED0EFE701C31F34400C9B600 /* SaveViewController.m */,
+				ED43A6FF1C31B856008C2C79 /* SaveTest.h */,
+				ED43A7001C31B857008C2C79 /* SaveTest.m */,
 			);
 			name = "Testing View Controllers";
 			sourceTree = "<group>";
@@ -149,10 +176,9 @@
 		ED0EFE781C323C2000C9B600 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ED0EFE751C323C0000C9B600 /* IntroductionViewController.h */,
-				ED0EFE761C323C0000C9B600 /* IntroductionViewController.m */,
-				ED0EFE791C3244BA00C9B600 /* RegisterUserViewController.h */,
-				ED0EFE7A1C3244BA00C9B600 /* RegisterUserViewController.m */,
+				ED0EFE731C323BD400C9B600 /* Main.storyboard */,
+				ED0F412A1C349CB900570703 /* Home */,
+				ED0F41291C349CB200570703 /* UserControl */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -184,6 +210,7 @@
 		ED0EFE8D1C3327D700C9B600 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ED0F411C1C347E0300570703 /* FriendModel */,
 				ED0EFE8E1C3327E100C9B600 /* UserModel */,
 			);
 			name = Models;
@@ -205,9 +232,47 @@
 			name = Parsers;
 			sourceTree = "<group>";
 		};
+		ED0F411C1C347E0300570703 /* FriendModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED0F411E1C347E3500570703 /* FriendModel.h */,
+				ED0F411F1C347E3500570703 /* FriendModel.m */,
+			);
+			name = FriendModel;
+			sourceTree = "<group>";
+		};
+		ED0F41291C349CB200570703 /* UserControl */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFE751C323C0000C9B600 /* IntroductionViewController.h */,
+				ED0EFE761C323C0000C9B600 /* IntroductionViewController.m */,
+				ED0EFE791C3244BA00C9B600 /* RegisterUserViewController.h */,
+				ED0EFE7A1C3244BA00C9B600 /* RegisterUserViewController.m */,
+				ED0F41211C34821000570703 /* SignInViewController.h */,
+				ED0F41221C34821000570703 /* SignInViewController.m */,
+			);
+			name = UserControl;
+			sourceTree = "<group>";
+		};
+		ED0F412A1C349CB900570703 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ED0F412B1C349CD200570703 /* FeedViewController.h */,
+				ED0F412C1C349CD200570703 /* FeedViewController.m */,
+				ED0F412E1C349D7000570703 /* MapViewController.h */,
+				ED0F412F1C349D7000570703 /* MapViewController.m */,
+				ED0F41311C349D7E00570703 /* PostViewController.h */,
+				ED0F41321C349D7E00570703 /* PostViewController.m */,
+				ED0F41341C349D8700570703 /* MeViewController.h */,
+				ED0F41351C349D8800570703 /* MeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		ED7EB01B1C289441004BAF7A = {
 			isa = PBXGroup;
 			children = (
+				ED0F41271C348E0300570703 /* libsqlite3.tbd */,
 				ED7EB0261C289442004BAF7A /* FBLA-2016 */,
 				ED7EB0431C289443004BAF7A /* FBLA-2016Tests */,
 				ED7EB04E1C289444004BAF7A /* FBLA-2016UITests */,
@@ -240,15 +305,13 @@
 				ED7EB02A1C289442004BAF7A /* AppDelegate.h */,
 				ED7EB02B1C289442004BAF7A /* AppDelegate.m */,
 				ED0EFE721C323B2F00C9B600 /* Testing View Controllers */,
-				ED7EB0331C289443004BAF7A /* Testing.storyboard */,
 				ED7EB0361C289443004BAF7A /* Assets.xcassets */,
 				ED7EB0381C289443004BAF7A /* LaunchScreen.storyboard */,
 				ED7EB03B1C289443004BAF7A /* Info.plist */,
 				ED7EB0271C289442004BAF7A /* Supporting Files */,
-				ED43A6FF1C31B856008C2C79 /* SaveTest.h */,
-				ED43A7001C31B857008C2C79 /* SaveTest.m */,
-				ED0EFE731C323BD400C9B600 /* Main.storyboard */,
 				ED0EFE781C323C2000C9B600 /* View Controllers */,
+				ED0F41241C348DA900570703 /* DBManager.h */,
+				ED0F41251C348DA900570703 /* DBManager.m */,
 			);
 			path = "FBLA-2016";
 			sourceTree = "<group>";
@@ -454,15 +517,22 @@
 				ED7EB0321C289442004BAF7A /* RegisterViewController.m in Sources */,
 				ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */,
 				ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */,
+				ED0F41301C349D7000570703 /* MapViewController.m in Sources */,
+				ED0F412D1C349CD200570703 /* FeedViewController.m in Sources */,
+				ED0F41331C349D7E00570703 /* PostViewController.m in Sources */,
 				ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */,
 				ED0EFE861C33268F00C9B600 /* FindFriendsView.m in Sources */,
+				ED0F41261C348DA900570703 /* DBManager.m in Sources */,
 				ED43A7011C31B857008C2C79 /* SaveTest.m in Sources */,
 				ED0EFE711C31F34400C9B600 /* SaveViewController.m in Sources */,
+				ED0F41361C349D8800570703 /* MeViewController.m in Sources */,
 				ED0EFE771C323C0000C9B600 /* IntroductionViewController.m in Sources */,
 				ED7EB02F1C289442004BAF7A /* LoginViewController.m in Sources */,
 				ED0EFE911C3327F900C9B600 /* UserModel.m in Sources */,
 				ED0EFE7B1C3244BA00C9B600 /* RegisterUserViewController.m in Sources */,
+				ED0F41201C347E3500570703 /* FriendModel.m in Sources */,
 				ED7EB0291C289442004BAF7A /* main.m in Sources */,
+				ED0F41231C34821000570703 /* SignInViewController.m in Sources */,
 				ED7EB0601C289AE6004BAF7A /* SlidingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

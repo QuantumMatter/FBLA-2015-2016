@@ -40,6 +40,10 @@
 @synthesize emailScroll;
 @synthesize emailField;
 
+@synthesize nFriends;
+
+@synthesize location;
+
 -(id) initWithFrame:(CGRect)frame {
     self = [[[NSBundle mainBundle] loadNibNamed:@"RegisterViews" owner:self options:nil] objectAtIndex:1];
     self.frame = frame;
@@ -124,6 +128,7 @@
     nearbyUsers = [[NSMutableArray alloc] init];
     bluetoothUsers = [[NSMutableArray alloc] init];
     emailUsers = [[NSMutableArray alloc] init];
+    nFriends = [[NSMutableArray alloc] init];
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:locationManager.location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
@@ -245,6 +250,16 @@
             self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         }];
     }
+}
+
+-(void) panelSelected:(id)sender {
+    ProfilePanelView *panel = (ProfilePanelView *)sender;
+    [nFriends addObject:panel.user];
+}
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *loc = [locations lastObject];
+    location = loc;
 }
 
 /*

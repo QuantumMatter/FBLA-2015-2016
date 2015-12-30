@@ -11,6 +11,8 @@
 #import "SlidingViewController.h"
 #import "FindFriendsView.h"
 #import "PopularPeopleView.h"
+#import "UserModel.h"
+#import "FriendModel.h"
 
 @interface RegisterUserViewController ()
 
@@ -22,6 +24,10 @@
     PersonalInfoView *personalView;
     FindFriendsView *friendsView;
     PopularPeopleView *popularView;
+    
+    UILabel *goLabel;
+    
+    UserModel *newUser;
 }
 
 - (void)viewDidLoad {
@@ -39,7 +45,34 @@
     [pan addTarget:popularView action:@selector(userSwiped:)];
     [self.view addGestureRecognizer:pan];
     
-    // Do any additional setup after loading the view.
+    
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    CGRect frame = CGRectMake(0.75 * width, 0.85 * height, 0.2 * width, 0.1 * height);
+    UIView *labelContainer = [[UIView alloc] initWithFrame:frame];
+    [self.view addSubview:labelContainer];
+    goLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    goLabel.text = @"GO";
+    goLabel.backgroundColor = [UIColor whiteColor];
+    UITapGestureRecognizer *goTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goLabelPressed)];
+    [labelContainer addGestureRecognizer:goTap];
+    [labelContainer addSubview:goLabel];
+    //goLabel.layer.zPosition = 100;
+}
+
+-(void) goLabelPressed {
+    NSLog(@"Go Pressed");
+    
+    newUser = [[UserModel alloc] init];
+    newUser.ID = -1;
+    newUser.profilePic = personalView.profilePic.image;
+    
+    newUser.firstName = personalView.firstName.text;
+    newUser.lastName = personalView.lastName.text;
+    newUser.email = personalView.emailAddress.text;
+    
+    newUser.latitude = friendsView.location.coordinate.latitude;
+    newUser.longitude = friendsView.location.coordinate.longitude;
 }
 
 -(NSInteger) numberOfViewsInSlidingView:(UIView *)slidingView {
@@ -92,6 +125,25 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) user:(id)sender receivedNewID:(NSInteger)newID {
+    newUser.ID = newID;
+    
+    newUser.followers = 0;
+    newUser.following = 0;
+    
+    NSMutableArray *newFriends = [[NSMutableArray alloc] init];
+    newFriends = friendsView.nFriends;
+    
+    for (int i = 0; i < [newFriends count]; i++) {
+        newUser.following++;
+        
+        UserModel *friendUser = [newFriends objectAtIndex:i];
+        
+        FriendModel *friend = [[FriendModel alloc] initWithUser:newID andFriend:friendUser.ID];
+        [friend pushToServer];
+    }
 }
 
 /*

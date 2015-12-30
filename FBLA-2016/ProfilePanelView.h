@@ -9,12 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "UserModel.h"
 
+@protocol ProfilePanelDelegate <NSObject>
+
+-(void) panelSelected:(id)sender;
+
+@end
+
 @interface ProfilePanelView : UIView
 
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *followLabel;
 @property UserModel *user;
+
+@property id<ProfilePanelDelegate> delegate;
 
 -(id) init;
 

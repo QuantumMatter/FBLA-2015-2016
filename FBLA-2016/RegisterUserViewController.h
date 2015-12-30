@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SlidingViewController.h"
+#import "UserModel.h"
 
 @interface RegisterUserViewController : UIViewController <SlidingViewDelegate>
 

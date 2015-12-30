@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/RegisterUserViewController.m"
-            timestampString = "473147385.901599"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473134554.007384"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-loadComponents"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473134554.007384"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-loadComponents"
             landmarkType = "5">
             <Locations>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/UserModel.m"
-            timestampString = "473136682.512164"
+            timestampString = "473205893.879366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-doBGOps"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/UserModel.m"
-            timestampString = "473136682.512164"
+            timestampString = "473205893.879366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-doBGOps"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,39 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473134554.007384"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "-addUserToNearby:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473132178.383512"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-loadComponents"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473134554.007384"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -762,11 +730,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473134554.007384"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-loadComponents"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
+            timestampString = "473204975.382486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-addUserToNearby:"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +762,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473134554.007384"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-addUserToNearby:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
+            timestampString = "473204975.382486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-addUserToNearby:"
             landmarkType = "5">
          </BreakpointContent>
@@ -794,7 +794,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/RegisterUserViewController.m"
-            timestampString = "473147385.901599"
+            timestampString = "473204975.382486"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FBLA-2016/RegisterUserViewController.m"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -809,28 +825,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FBLA-2016/RegisterUserViewController.m"
-            timestampString = "473147385.901599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FBLA-2016/IntroductionViewController.m"
-            timestampString = "473132449.096942"
+            timestampString = "473206102.120207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-registerPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/RegisterUserViewController.m"
-            timestampString = "473147385.901599"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473144683.715987"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-userSwiped:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1082,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FBLA-2016/Assets.xcassets/FindFriendsView.m"
-            timestampString = "473144683.715987"
+            timestampString = "473204975.382486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "5">
          </BreakpointContent>

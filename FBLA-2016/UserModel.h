@@ -10,9 +10,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@protocol UserModelDelegate <NSObject>
+@protocol UserModelDelegate <NSObject, NSURLConnectionDataDelegate, NSURLConnectionDelegate, NSCoding>
 
 -(void) zipFound:(id)sender;
+-(void) user:(id)sender receivedNewID:(NSInteger)newID;
 
 @end
 
@@ -35,9 +36,11 @@
 @property NSInteger followers;
 @property NSInteger following;
 
+@property NSString *gender;
+
 @property id<UserModelDelegate> delegate;
 
--(id) initWithProfileSrc:(NSString *)profileSrc andFirstName:(NSString *)fName andLastName:(NSString *)lName;
+-(id) initWithID:(NSInteger)_ID;
 
 -(void) test1;
 -(void) test2;

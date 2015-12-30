@@ -17,11 +17,13 @@
 @synthesize profilePicView;
 @synthesize user;
 
+@synthesize delegate;
+
 -(id) init {
     self = [[[NSBundle mainBundle] loadNibNamed:@"ProfilePanelView" owner:self options:nil] objectAtIndex:0];
     
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followTapped:)];
-    [nameLabel addGestureRecognizer:tap];
+    [self addGestureRecognizer:tap];
     
     return self;
 }
@@ -42,6 +44,7 @@
     if (tapped == tap) {
         if (tapped.state == UIGestureRecognizerStateEnded) {
             NSLog(@"Follow Tapped");
+            [delegate panelSelected:self];
         }
     }
 }

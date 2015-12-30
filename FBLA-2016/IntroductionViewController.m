@@ -9,6 +9,7 @@
 #import "IntroductionViewController.h"
 #import "SlidingViewController.h"
 #import "SignInMenuView.h"
+#import "UserModel.h"
 
 @interface IntroductionViewController ()
 
@@ -18,10 +19,26 @@
     SlidingViewController *slidingView;
     SignInMenuView *signInMenu;
     
+    NSString *docPath;
+    
     NSArray *introViews;
 }
 
+#define kDataKey        @"Data"
+#define kDataFile       @"data.plist"
+
 - (void)viewDidLoad {
+    UserModel *currUser = [self data];
+    if (currUser != nil) {
+        NSLog(@"User Already Exists");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Test"
+                                                        message:@"User Already Exists"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        //[self performSegueWithIdentifier:@"" sender:self];
+    }
     [super viewDidLoad];
     
     introViews = [[NSBundle mainBundle] loadNibNamed:@"IntroViews" owner:self options:nil];
@@ -71,6 +88,7 @@
 
 -(void) signInPressed:(UIButton *) button {
     NSLog(@"Sign In Pressed");
+    [self performSegueWithIdentifier:@"presentSignIn" sender:self];
 }
 
 -(void) registerPressed:(UIButton *) button {
@@ -81,6 +99,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(UserModel *) data {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    docPath = [paths objectAtIndex:0];
+    docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+    
+    NSString *dataPath = [docPath stringByAppendingPathComponent:kDataFile];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
+    if (codedData == nil) {
+        return nil;
+    }
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+    UserModel *save = [unarchiver decodeObjectForKey:kDataKey];
+    [unarchiver finishDecoding];
+    
+    return save;
 }
 
 /*
