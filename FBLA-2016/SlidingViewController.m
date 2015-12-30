@@ -7,6 +7,7 @@
 //
 
 #import "SlidingViewController.h"
+#import "PopularPeopleView.h"
 
 @implementation SlidingViewController {
     
@@ -22,6 +23,8 @@
     
     NSMutableArray *unders;
     NSMutableArray *labels;
+    
+    BOOL active;
 }
 
 @synthesize views;
@@ -72,6 +75,8 @@
 }
 
 -(void) loadComponents {
+    active = YES;
+    
     secondaryUnderSpacing = 10;
     secondaryUnderLength = 25;
     primaryUnderLength = self.frame.size.width - (numberOfViews * (secondaryUnderLength + secondaryUnderSpacing));
@@ -111,34 +116,87 @@
         UIView *view = [views objectAtIndex:0];
         view.frame = currentFrame;
     }];
+    
+    UIView *leftButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width / 2, 65)];
+    UITapGestureRecognizer *leftTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLeft:)];
+    //leftButton.backgroundColor = [UIColor blackColor];
+    [leftButton addGestureRecognizer:leftTap];
+    [self addSubview:leftButton];
+    leftButton.layer.zPosition = 80;
+    
+    UIView *rightButton = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2, 0, self.frame.size.width / 2, 65)];
+    UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRight:)];
+    //rightButton.backgroundColor = [UIColor blueColor];
+    [rightButton addGestureRecognizer:rightTap];
+    [self addSubview:rightButton];
+    rightButton.layer.zPosition = 80;
+}
+
+-(void) tapLeft:(UITapGestureRecognizer *)recog {
+    NSLog(@"Tap Left");
+    [self decreaseSelectedIndex];
+}
+
+-(void) tapRight:(UITapGestureRecognizer *)recog {
+    NSLog(@"Tap Right");
+    [self increaseSelectedIndex];
 }
 
 -(void) swiped:(UIPanGestureRecognizer *)recog {
-    switch (recog.state) {
-        case UIGestureRecognizerStateBegan:
-        {
-            initPoint = [recog locationInView:self];
-            break;
-        }
-            
-        case UIGestureRecognizerStateEnded:
-        {
-            CGPoint point = [recog locationInView:self];
-            double deltaX = point.x - initPoint.x;
-            if (deltaX < 0) {
-                [self increaseSelectedIndex];
-            } else {
-                [self decreaseSelectedIndex];
+    if (active) {
+        switch (recog.state) {
+            case UIGestureRecognizerStateBegan:
+            {
+                initPoint = [recog locationInView:self];
+                break;
             }
-            return;
-            break;
+                
+            case UIGestureRecognizerStateEnded:
+            {
+                CGPoint point = [recog locationInView:self];
+                double deltaX = point.x - initPoint.x;
+                if (fabs(deltaX) > 50) {
+                    if (deltaX < 0) {
+                        [self increaseSelectedIndex];
+                    } else {
+                        [self decreaseSelectedIndex];
+                    }
+                } else {
+                    [self restoreView:deltaX];
+                }
+                return;
+                break;
+            }
+                
+            default:
+                break;
         }
-            
-        default:
-            break;
+        CGPoint point = [recog locationInView:self];
+        double deltaX = point.x - initPoint.x;
+        UIView *viewA = [views objectAtIndex:selectedView];
+        UIView *viewB;
+        CGRect rectA;
+        CGRect rectB;
+        if (deltaX <= 0) {
+            if ((selectedView + 1) == numberOfViews) {
+                return;
+            }
+            viewB = [views objectAtIndex:(selectedView+1)];
+            rectB = CGRectMake(self.frame.size.width + deltaX, 0, self.frame.size.width, self.frame.size.height);
+        } else {
+            if (selectedView == 0) {
+                return;
+            }
+            viewB = [views objectAtIndex:(selectedView-1)];
+            rectB = CGRectMake((0 - self.frame.size.width) + deltaX, 0, self.frame.size.width, self.frame.size.height);
+        }
+        rectA = CGRectMake(deltaX, 0, self.frame.size.width, self.frame.size.height);
+        viewA.frame = rectA;
+        viewB.frame = rectB;
     }
-    CGPoint point = [recog locationInView:self];
-    double deltaX = point.x - initPoint.x;
+}
+
+-(void) restoreView:(float)deltaX {
     UIView *viewA = [views objectAtIndex:selectedView];
     UIView *viewB;
     CGRect rectA;
@@ -148,20 +206,23 @@
             return;
         }
         viewB = [views objectAtIndex:(selectedView+1)];
-        rectB = CGRectMake(self.frame.size.width + deltaX, 0, self.frame.size.width, self.frame.size.height);
+        rectB = rightFrame;
     } else {
         if (selectedView == 0) {
             return;
         }
         viewB = [views objectAtIndex:(selectedView-1)];
-        rectB = CGRectMake((0 - self.frame.size.width) + deltaX, 0, self.frame.size.width, self.frame.size.height);
+        rectB = leftFrame;
     }
-    rectA = CGRectMake(deltaX, 0, self.frame.size.width, self.frame.size.height);
-    viewA.frame = rectA;
-    viewB.frame = rectB;
+    rectA = currentFrame;
+    [UIView animateWithDuration:0.25 animations:^{
+        viewA.frame = rectA;
+        viewB.frame = rectB;
+    }];
 }
 
 -(void) decreaseSelectedIndex {
+    [self endEditing:YES];
     UIView *viewA = [views objectAtIndex:selectedView];
     UILabel *labelA = [labels objectAtIndex:selectedView];
     UIView *underA = [unders objectAtIndex:selectedView];
@@ -177,6 +238,13 @@
     UILabel *labelB = [labels objectAtIndex:(selectedView - 1)];
     UIView *underB = [unders objectAtIndex:(selectedView - 1)];
     
+    UILabel *labelC;
+    if ((selectedView + 2) > (numberOfViews - 0)) {
+        labelC = nil;
+    } else {
+        labelC = [labels objectAtIndex:(selectedView + 1)];
+    }
+    
     [UIView animateWithDuration:0.5 animations:^{
         viewA.frame = rightFrame;
         viewB.frame = currentFrame;
@@ -186,12 +254,27 @@
         
         underB.frame = CGRectMake(underB.frame.origin.x, underB.frame.origin.y, primaryUnderLength, underB.frame.size.height);
         underA.frame = CGRectMake(underB.frame.origin.x + underB.frame.size.width + secondaryUnderSpacing, underA.frame.origin.y, secondaryUnderLength, underA.frame.size.height);
-
+        
+        if (labelC != nil) {
+            labelC.frame = CGRectMake(self.frame.size.width + 50, labelC.frame.origin.y, labelC.frame.size.width, labelC.frame.size.height);
+        }
+        @try {
+            PopularPeopleView *viewP = (PopularPeopleView *)viewA;
+            [viewP deactivateView];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     }];
+    active = YES;
     selectedView--;
 }
 
 -(void) increaseSelectedIndex {
+    [self endEditing:YES];
     UIView *viewA = [views objectAtIndex:selectedView];
     UILabel *labelA = [labels objectAtIndex:selectedView];
     UIView *underA = [unders objectAtIndex:selectedView];
@@ -206,6 +289,13 @@
     UILabel *labelB = [labels objectAtIndex:(selectedView + 1)];
     UIView *underB = [unders objectAtIndex:(selectedView + 1)];
     
+    UILabel *labelC;
+    if ((selectedView + 2) > (numberOfViews - 1)) {
+        labelC = nil;
+    } else {
+        labelC = [labels objectAtIndex:(selectedView + 2)];
+    }
+    
     [UIView animateWithDuration:0.5 animations:^{
         viewA.frame = leftFrame;
         viewB.frame = currentFrame;
@@ -215,6 +305,22 @@
         
         underB.frame = CGRectMake(underA.frame.origin.x + secondaryUnderLength + secondaryUnderSpacing, underB.frame.origin.y, primaryUnderLength, underB.frame.size.height);
         underA.frame = CGRectMake(8 + (selectedView * (secondaryUnderSpacing + secondaryUnderLength)), underA.frame.origin.y, secondaryUnderLength, underB.frame.size.height);
+        
+        if (labelC != nil) {
+            labelC.frame = CGRectMake(0.8 * self.frame.size.width, labelC.frame.origin.y, labelC.frame.size.width, labelC.frame.size.height);
+        }
+    } completion:^(BOOL finished) {
+        @try {
+            PopularPeopleView *viewP = (PopularPeopleView *)viewB;
+            [viewP activateView];
+            active = NO;
+        }
+        @catch (NSException *exception) {
+            active = YES;
+        }
+        @finally {
+            
+        }
     }];
     selectedView++;
 }

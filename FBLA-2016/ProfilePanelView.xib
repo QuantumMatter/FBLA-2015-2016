@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfilePanelView">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-pic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9xj-I0-L9P">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOLLOW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1H-iW-eAo">
+                    <rect key="frame" x="8" y="121" width="134" height="21"/>
+                    <color key="backgroundColor" red="0.98823529409999999" green="0.64104153159999999" blue="0.2461301796" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXJ-Oh-zWh">
+                    <rect key="frame" x="8" y="92" width="134" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9xj-I0-L9P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="G56-H0-lIX"/>
+                <constraint firstItem="v1H-iW-eAo" firstAttribute="leading" secondItem="WXJ-Oh-zWh" secondAttribute="leading" id="HhZ-PG-78X"/>
+                <constraint firstItem="v1H-iW-eAo" firstAttribute="centerX" secondItem="9xj-I0-L9P" secondAttribute="centerX" id="Ikn-s1-xJv"/>
+                <constraint firstAttribute="trailing" secondItem="9xj-I0-L9P" secondAttribute="trailing" id="Q7t-5E-Flz"/>
+                <constraint firstItem="v1H-iW-eAo" firstAttribute="top" secondItem="WXJ-Oh-zWh" secondAttribute="bottom" constant="8" symbolic="YES" id="Rca-iK-LLT"/>
+                <constraint firstItem="v1H-iW-eAo" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="bVC-mD-Ef4"/>
+                <constraint firstItem="9xj-I0-L9P" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cJ9-TM-BSU"/>
+                <constraint firstAttribute="bottom" secondItem="9xj-I0-L9P" secondAttribute="bottom" id="cWu-9u-WEu"/>
+                <constraint firstItem="WXJ-Oh-zWh" firstAttribute="trailing" secondItem="v1H-iW-eAo" secondAttribute="trailing" id="n19-eX-gQ6"/>
+                <constraint firstItem="WXJ-Oh-zWh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="usb-YV-sg5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="followLabel" destination="v1H-iW-eAo" id="fD0-ZQ-TTU"/>
+                <outlet property="nameLabel" destination="WXJ-Oh-zWh" id="SHc-FO-SAg"/>
+                <outlet property="profilePicView" destination="9xj-I0-L9P" id="i2G-nH-xpb"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="profile-pic.jpg" width="1290" height="1290"/>
+    </resources>
+</document>

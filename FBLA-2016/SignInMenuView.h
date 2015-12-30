@@ -11,5 +11,7 @@
 @interface SignInMenuView : UIView
 
 -(id) init;
+@property (strong, nonatomic) IBOutlet UIButton *signInButton;
+@property (strong, nonatomic) IBOutlet UIButton *registerButton;
 
 @end

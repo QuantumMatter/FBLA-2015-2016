@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		ED0EFE711C31F34400C9B600 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE701C31F34400C9B600 /* SaveViewController.m */; };
+		ED0EFE741C323BD400C9B600 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0EFE731C323BD400C9B600 /* Main.storyboard */; };
+		ED0EFE771C323C0000C9B600 /* IntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE761C323C0000C9B600 /* IntroductionViewController.m */; };
+		ED0EFE7B1C3244BA00C9B600 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE7A1C3244BA00C9B600 /* RegisterUserViewController.m */; };
+		ED0EFE7E1C3244EA00C9B600 /* RegisterViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0EFE7D1C3244EA00C9B600 /* RegisterViews.xib */; };
+		ED0EFE811C32452100C9B600 /* PersonalInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE801C32452100C9B600 /* PersonalInfoView.m */; };
+		ED0EFE831C32544E00C9B600 /* profile-pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0EFE821C32544D00C9B600 /* profile-pic.jpg */; };
+		ED0EFE861C33268F00C9B600 /* FindFriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE851C33268F00C9B600 /* FindFriendsView.m */; };
+		ED0EFE8A1C3326B900C9B600 /* ProfilePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE891C3326B900C9B600 /* ProfilePanelView.m */; };
+		ED0EFE8C1C3326D100C9B600 /* ProfilePanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0EFE8B1C3326D100C9B600 /* ProfilePanelView.xib */; };
+		ED0EFE911C3327F900C9B600 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE901C3327F900C9B600 /* UserModel.m */; };
+		ED0EFE931C332A1E00C9B600 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0EFE921C332A1E00C9B600 /* default.png */; };
+		ED0EFE971C33787E00C9B600 /* PopularPeopleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0EFE961C33787D00C9B600 /* PopularPeopleView.m */; };
 		ED43A7011C31B857008C2C79 /* SaveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED43A7001C31B857008C2C79 /* SaveTest.m */; };
 		ED7EB0291C289442004BAF7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0281C289442004BAF7A /* main.m */; };
 		ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB02B1C289442004BAF7A /* AppDelegate.m */; };
 		ED7EB02F1C289442004BAF7A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB02E1C289442004BAF7A /* LoginViewController.m */; };
 		ED7EB0321C289442004BAF7A /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0311C289442004BAF7A /* RegisterViewController.m */; };
-		ED7EB0351C289443004BAF7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB0331C289443004BAF7A /* Main.storyboard */; };
+		ED7EB0351C289443004BAF7A /* Testing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB0331C289443004BAF7A /* Testing.storyboard */; };
 		ED7EB0371C289443004BAF7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB0361C289443004BAF7A /* Assets.xcassets */; };
 		ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB0381C289443004BAF7A /* LaunchScreen.storyboard */; };
 		ED7EB0451C289444004BAF7A /* FBLA_2016Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0441C289443004BAF7A /* FBLA_2016Tests.m */; };
@@ -46,6 +58,25 @@
 /* Begin PBXFileReference section */
 		ED0EFE6F1C31F34400C9B600 /* SaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveViewController.h; sourceTree = "<group>"; };
 		ED0EFE701C31F34400C9B600 /* SaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveViewController.m; sourceTree = "<group>"; };
+		ED0EFE731C323BD400C9B600 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ED0EFE751C323C0000C9B600 /* IntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionViewController.h; sourceTree = "<group>"; };
+		ED0EFE761C323C0000C9B600 /* IntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionViewController.m; sourceTree = "<group>"; };
+		ED0EFE791C3244BA00C9B600 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
+		ED0EFE7A1C3244BA00C9B600 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
+		ED0EFE7D1C3244EA00C9B600 /* RegisterViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViews.xib; sourceTree = "<group>"; };
+		ED0EFE7F1C32452100C9B600 /* PersonalInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoView.h; sourceTree = "<group>"; };
+		ED0EFE801C32452100C9B600 /* PersonalInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoView.m; sourceTree = "<group>"; };
+		ED0EFE821C32544D00C9B600 /* profile-pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-pic.jpg"; sourceTree = "<group>"; };
+		ED0EFE841C33268F00C9B600 /* FindFriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindFriendsView.h; path = Assets.xcassets/FindFriendsView.h; sourceTree = "<group>"; };
+		ED0EFE851C33268F00C9B600 /* FindFriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindFriendsView.m; path = Assets.xcassets/FindFriendsView.m; sourceTree = "<group>"; };
+		ED0EFE881C3326B900C9B600 /* ProfilePanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePanelView.h; sourceTree = "<group>"; };
+		ED0EFE891C3326B900C9B600 /* ProfilePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePanelView.m; sourceTree = "<group>"; };
+		ED0EFE8B1C3326D100C9B600 /* ProfilePanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePanelView.xib; sourceTree = "<group>"; };
+		ED0EFE8F1C3327F900C9B600 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		ED0EFE901C3327F900C9B600 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		ED0EFE921C332A1E00C9B600 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		ED0EFE951C33787D00C9B600 /* PopularPeopleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularPeopleView.h; sourceTree = "<group>"; };
+		ED0EFE961C33787D00C9B600 /* PopularPeopleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularPeopleView.m; sourceTree = "<group>"; };
 		ED43A6FF1C31B856008C2C79 /* SaveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTest.h; sourceTree = "<group>"; };
 		ED43A7001C31B857008C2C79 /* SaveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTest.m; sourceTree = "<group>"; };
 		ED7EB0241C289442004BAF7A /* FBLA-2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FBLA-2016.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +87,7 @@
 		ED7EB02E1C289442004BAF7A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		ED7EB0301C289442004BAF7A /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		ED7EB0311C289442004BAF7A /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		ED7EB0341C289443004BAF7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED7EB0341C289443004BAF7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Testing.storyboard; sourceTree = "<group>"; };
 		ED7EB0361C289443004BAF7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED7EB0391C289443004BAF7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED7EB03B1C289443004BAF7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,6 +146,65 @@
 			name = "Testing View Controllers";
 			sourceTree = "<group>";
 		};
+		ED0EFE781C323C2000C9B600 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFE751C323C0000C9B600 /* IntroductionViewController.h */,
+				ED0EFE761C323C0000C9B600 /* IntroductionViewController.m */,
+				ED0EFE791C3244BA00C9B600 /* RegisterUserViewController.h */,
+				ED0EFE7A1C3244BA00C9B600 /* RegisterUserViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ED0EFE7C1C3244C100C9B600 /* RegisterViews */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFE7D1C3244EA00C9B600 /* RegisterViews.xib */,
+				ED0EFE7F1C32452100C9B600 /* PersonalInfoView.h */,
+				ED0EFE801C32452100C9B600 /* PersonalInfoView.m */,
+				ED0EFE841C33268F00C9B600 /* FindFriendsView.h */,
+				ED0EFE851C33268F00C9B600 /* FindFriendsView.m */,
+				ED0EFE951C33787D00C9B600 /* PopularPeopleView.h */,
+				ED0EFE961C33787D00C9B600 /* PopularPeopleView.m */,
+			);
+			name = RegisterViews;
+			sourceTree = "<group>";
+		};
+		ED0EFE871C33269900C9B600 /* ProfilePanelView */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFE881C3326B900C9B600 /* ProfilePanelView.h */,
+				ED0EFE891C3326B900C9B600 /* ProfilePanelView.m */,
+				ED0EFE8B1C3326D100C9B600 /* ProfilePanelView.xib */,
+			);
+			name = ProfilePanelView;
+			sourceTree = "<group>";
+		};
+		ED0EFE8D1C3327D700C9B600 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFE8E1C3327E100C9B600 /* UserModel */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		ED0EFE8E1C3327E100C9B600 /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EFE8F1C3327F900C9B600 /* UserModel.h */,
+				ED0EFE901C3327F900C9B600 /* UserModel.m */,
+			);
+			name = UserModel;
+			sourceTree = "<group>";
+		};
+		ED0EFE941C332CB800C9B600 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
 		ED7EB01B1C289441004BAF7A = {
 			isa = PBXGroup;
 			children = (
@@ -138,18 +228,27 @@
 		ED7EB0261C289442004BAF7A /* FBLA-2016 */ = {
 			isa = PBXGroup;
 			children = (
+				ED0EFE941C332CB800C9B600 /* Parsers */,
+				ED0EFE8D1C3327D700C9B600 /* Models */,
+				ED0EFE871C33269900C9B600 /* ProfilePanelView */,
+				ED0EFE921C332A1E00C9B600 /* default.png */,
+				ED0EFE821C32544D00C9B600 /* profile-pic.jpg */,
+				ED0EFE7C1C3244C100C9B600 /* RegisterViews */,
+				ED7EB0691C28D739004BAF7A /* Sign In Menu */,
 				ED7EB0631C28D475004BAF7A /* IntroViews */,
 				ED7EB05D1C289AB2004BAF7A /* SlidingViewController */,
 				ED7EB02A1C289442004BAF7A /* AppDelegate.h */,
 				ED7EB02B1C289442004BAF7A /* AppDelegate.m */,
 				ED0EFE721C323B2F00C9B600 /* Testing View Controllers */,
-				ED7EB0331C289443004BAF7A /* Main.storyboard */,
+				ED7EB0331C289443004BAF7A /* Testing.storyboard */,
 				ED7EB0361C289443004BAF7A /* Assets.xcassets */,
 				ED7EB0381C289443004BAF7A /* LaunchScreen.storyboard */,
 				ED7EB03B1C289443004BAF7A /* Info.plist */,
 				ED7EB0271C289442004BAF7A /* Supporting Files */,
 				ED43A6FF1C31B856008C2C79 /* SaveTest.h */,
 				ED43A7001C31B857008C2C79 /* SaveTest.m */,
+				ED0EFE731C323BD400C9B600 /* Main.storyboard */,
+				ED0EFE781C323C2000C9B600 /* View Controllers */,
 			);
 			path = "FBLA-2016";
 			sourceTree = "<group>";
@@ -193,7 +292,6 @@
 		ED7EB0631C28D475004BAF7A /* IntroViews */ = {
 			isa = PBXGroup;
 			children = (
-				ED7EB0691C28D739004BAF7A /* Sign In Menu */,
 				ED7EB0641C28D496004BAF7A /* IntroViews.xib */,
 				ED7EB0661C28D4EA004BAF7A /* IntroViewController.h */,
 				ED7EB0671C28D4EA004BAF7A /* IntroViewController.m */,
@@ -315,11 +413,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0EFE741C323BD400C9B600 /* Main.storyboard in Resources */,
 				ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */,
 				ED7EB0621C289AF8004BAF7A /* SlidingView.xib in Resources */,
+				ED0EFE8C1C3326D100C9B600 /* ProfilePanelView.xib in Resources */,
+				ED0EFE931C332A1E00C9B600 /* default.png in Resources */,
+				ED0EFE831C32544E00C9B600 /* profile-pic.jpg in Resources */,
 				ED7EB0371C289443004BAF7A /* Assets.xcassets in Resources */,
 				ED7EB0651C28D496004BAF7A /* IntroViews.xib in Resources */,
-				ED7EB0351C289443004BAF7A /* Main.storyboard in Resources */,
+				ED0EFE7E1C3244EA00C9B600 /* RegisterViews.xib in Resources */,
+				ED7EB0351C289443004BAF7A /* Testing.storyboard in Resources */,
 				ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,13 +448,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0EFE811C32452100C9B600 /* PersonalInfoView.m in Sources */,
+				ED0EFE971C33787E00C9B600 /* PopularPeopleView.m in Sources */,
+				ED0EFE8A1C3326B900C9B600 /* ProfilePanelView.m in Sources */,
 				ED7EB0321C289442004BAF7A /* RegisterViewController.m in Sources */,
 				ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */,
 				ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */,
 				ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */,
+				ED0EFE861C33268F00C9B600 /* FindFriendsView.m in Sources */,
 				ED43A7011C31B857008C2C79 /* SaveTest.m in Sources */,
 				ED0EFE711C31F34400C9B600 /* SaveViewController.m in Sources */,
+				ED0EFE771C323C0000C9B600 /* IntroductionViewController.m in Sources */,
 				ED7EB02F1C289442004BAF7A /* LoginViewController.m in Sources */,
+				ED0EFE911C3327F900C9B600 /* UserModel.m in Sources */,
+				ED0EFE7B1C3244BA00C9B600 /* RegisterUserViewController.m in Sources */,
 				ED7EB0291C289442004BAF7A /* main.m in Sources */,
 				ED7EB0601C289AE6004BAF7A /* SlidingViewController.m in Sources */,
 			);
@@ -389,12 +499,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ED7EB0331C289443004BAF7A /* Main.storyboard */ = {
+		ED7EB0331C289443004BAF7A /* Testing.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ED7EB0341C289443004BAF7A /* Base */,
 			);
-			name = Main.storyboard;
+			name = Testing.storyboard;
 			sourceTree = "<group>";
 		};
 		ED7EB0381C289443004BAF7A /* LaunchScreen.storyboard */ = {
