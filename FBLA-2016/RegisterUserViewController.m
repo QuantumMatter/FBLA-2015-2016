@@ -28,7 +28,12 @@
     UILabel *goLabel;
     
     UserModel *newUser;
+    
+    NSString *docPath;
 }
+
+#define kDataKey        @"Data"
+#define kDataFile       @"data.plist"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,10 +78,29 @@
     
     newUser.latitude = friendsView.location.coordinate.latitude;
     newUser.longitude = friendsView.location.coordinate.longitude;
+    
+    [self user:newUser receivedNewID:0];
 }
 
 -(NSInteger) numberOfViewsInSlidingView:(UIView *)slidingView {
     return 3;
+}
+
+-(void) saveNewUser {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    docPath = [paths objectAtIndex:0];
+    docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] createDirectoryAtPath:docPath withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    NSString *dataPath = [docPath stringByAppendingPathComponent:kDataFile];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    //NSMutableData *_data = [[NSMutableData alloc] init];
+    [archiver encodeObject:newUser forKey:kDataKey];
+    [archiver finishEncoding];
+    [data writeToFile:dataPath atomically:YES];
 }
 
 -(NSString *) titleForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {
@@ -144,6 +168,9 @@
         FriendModel *friend = [[FriendModel alloc] initWithUser:newID andFriend:friendUser.ID];
         [friend pushToServer];
     }
+    
+    [self saveNewUser];
+    [self performSegueWithIdentifier:@"presentHome" sender:self];
 }
 
 /*

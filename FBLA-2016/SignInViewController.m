@@ -62,7 +62,7 @@
     [archiver encodeObject:saveTest forKey:kDataKey];
     [archiver finishEncoding];
     [data writeToFile:dataPath atomically:YES];
-    [self performSegueWithIdentifier:@"presentIntroduction" sender:self];
+    [self performSegueWithIdentifier:@"presentHome" sender:self];
 }
 
 - (IBAction)registerPressed:(id)sender {

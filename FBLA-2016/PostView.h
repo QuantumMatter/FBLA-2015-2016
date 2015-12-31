@@ -1,5 +1,5 @@
 //
-//  MeViewController.h
+//  PostView.h
 //  FBLA-2016
 //
 //  Created by David Kopala on 12/30/15.
@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostModel.h"
 #import "SlidingViewController.h"
 
-@interface MeViewController : UIViewController <SlidingViewDelegate>
+@interface PostView : UIView <SlidingViewDelegate>
+
+-(id) initWithFrame:(CGRect)frame andPost:(PostModel *)postModel;
 
 @end

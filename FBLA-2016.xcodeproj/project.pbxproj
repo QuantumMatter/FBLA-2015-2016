@@ -44,6 +44,20 @@
 		ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0671C28D4EA004BAF7A /* IntroViewController.m */; };
 		ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */; };
 		ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */; };
+		EDEA48E01C34BB0E0025FDA6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */; };
+		EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */; };
+		EDEA48E91C34DEE00025FDA6 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48E81C34DEE00025FDA6 /* PostModel.m */; };
+		EDEA48EC1C34DEF10025FDA6 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48EB1C34DEF10025FDA6 /* CommentModel.m */; };
+		EDEA48F01C34E0090025FDA6 /* ImagePostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48EF1C34E0090025FDA6 /* ImagePostModel.m */; };
+		EDEA48F41C34E19B0025FDA6 /* PostCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48F31C34E19B0025FDA6 /* PostCellView.m */; };
+		EDEA48F71C34E1B90025FDA6 /* PostCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA48F61C34E1B90025FDA6 /* PostCellView.xib */; };
+		EDEA48FB1C34E2DC0025FDA6 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA48FA1C34E2DC0025FDA6 /* RatingView.xib */; };
+		EDEA48FE1C34E2EB0025FDA6 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48FD1C34E2EB0025FDA6 /* RatingView.m */; };
+		EDEA49021C34E3000025FDA6 /* RatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA49011C34E3000025FDA6 /* RatingModel.m */; };
+		EDEA49061C34EBF20025FDA6 /* CommentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA49051C34EBF20025FDA6 /* CommentCellView.m */; };
+		EDEA49081C34EC400025FDA6 /* CommentCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA49071C34EC400025FDA6 /* CommentCellView.xib */; };
+		EDEA490B1C34F2920025FDA6 /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA490A1C34F2920025FDA6 /* PostView.xib */; };
+		EDEA490E1C34F2A20025FDA6 /* PostView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA490D1C34F2A20025FDA6 /* PostView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +143,29 @@
 		ED7EB06A1C28D7C4004BAF7A /* SignInMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInMenuView.h; sourceTree = "<group>"; };
 		ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInMenuView.m; sourceTree = "<group>"; };
 		ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInMenuView.xib; sourceTree = "<group>"; };
+		EDEA48DE1C34BB0E0025FDA6 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		EDEA48E71C34DEE00025FDA6 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
+		EDEA48E81C34DEE00025FDA6 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
+		EDEA48EA1C34DEF10025FDA6 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		EDEA48EB1C34DEF10025FDA6 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		EDEA48EE1C34E0090025FDA6 /* ImagePostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePostModel.h; sourceTree = "<group>"; };
+		EDEA48EF1C34E0090025FDA6 /* ImagePostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePostModel.m; sourceTree = "<group>"; };
+		EDEA48F21C34E19B0025FDA6 /* PostCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellView.h; sourceTree = "<group>"; };
+		EDEA48F31C34E19B0025FDA6 /* PostCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellView.m; sourceTree = "<group>"; };
+		EDEA48F61C34E1B90025FDA6 /* PostCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCellView.xib; sourceTree = "<group>"; };
+		EDEA48FA1C34E2DC0025FDA6 /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		EDEA48FC1C34E2EB0025FDA6 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
+		EDEA48FD1C34E2EB0025FDA6 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
+		EDEA49001C34E3000025FDA6 /* RatingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingModel.h; sourceTree = "<group>"; };
+		EDEA49011C34E3000025FDA6 /* RatingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingModel.m; sourceTree = "<group>"; };
+		EDEA49041C34EBF20025FDA6 /* CommentCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCellView.h; sourceTree = "<group>"; };
+		EDEA49051C34EBF20025FDA6 /* CommentCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCellView.m; sourceTree = "<group>"; };
+		EDEA49071C34EC400025FDA6 /* CommentCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCellView.xib; sourceTree = "<group>"; };
+		EDEA490A1C34F2920025FDA6 /* PostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
+		EDEA490C1C34F2A20025FDA6 /* PostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostView.h; sourceTree = "<group>"; };
+		EDEA490D1C34F2A20025FDA6 /* PostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +247,10 @@
 		ED0EFE8D1C3327D700C9B600 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EDEA48FF1C34E2F20025FDA6 /* RatingModel */,
+				EDEA48ED1C34DFF80025FDA6 /* ImagePostModel */,
+				EDEA48E61C34DEC80025FDA6 /* CommentModel */,
+				EDEA48E51C34DEBA0025FDA6 /* PostModel */,
 				ED0F411C1C347E0300570703 /* FriendModel */,
 				ED0EFE8E1C3327E100C9B600 /* UserModel */,
 			);
@@ -312,6 +353,7 @@
 				ED0EFE781C323C2000C9B600 /* View Controllers */,
 				ED0F41241C348DA900570703 /* DBManager.h */,
 				ED0F41251C348DA900570703 /* DBManager.m */,
+				EDEA48F81C34E2820025FDA6 /* Views */,
 			);
 			path = "FBLA-2016";
 			sourceTree = "<group>";
@@ -370,6 +412,112 @@
 				ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */,
 			);
 			name = "Sign In Menu";
+			sourceTree = "<group>";
+		};
+		EDEA48E21C34BB470025FDA6 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48DE1C34BB0E0025FDA6 /* ProfileView.h */,
+				EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */,
+				EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */,
+			);
+			name = ProfileView;
+			sourceTree = "<group>";
+		};
+		EDEA48E51C34DEBA0025FDA6 /* PostModel */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48E71C34DEE00025FDA6 /* PostModel.h */,
+				EDEA48E81C34DEE00025FDA6 /* PostModel.m */,
+			);
+			name = PostModel;
+			sourceTree = "<group>";
+		};
+		EDEA48E61C34DEC80025FDA6 /* CommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48EA1C34DEF10025FDA6 /* CommentModel.h */,
+				EDEA48EB1C34DEF10025FDA6 /* CommentModel.m */,
+			);
+			name = CommentModel;
+			sourceTree = "<group>";
+		};
+		EDEA48ED1C34DFF80025FDA6 /* ImagePostModel */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48EE1C34E0090025FDA6 /* ImagePostModel.h */,
+				EDEA48EF1C34E0090025FDA6 /* ImagePostModel.m */,
+			);
+			name = ImagePostModel;
+			sourceTree = "<group>";
+		};
+		EDEA48F51C34E1A30025FDA6 /* PostCellView */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48F21C34E19B0025FDA6 /* PostCellView.h */,
+				EDEA48F31C34E19B0025FDA6 /* PostCellView.m */,
+				EDEA48F61C34E1B90025FDA6 /* PostCellView.xib */,
+			);
+			name = PostCellView;
+			sourceTree = "<group>";
+		};
+		EDEA48F81C34E2820025FDA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA490F1C34F3910025FDA6 /* Cells */,
+				EDEA49091C34F2860025FDA6 /* PostView */,
+				EDEA48F91C34E2CF0025FDA6 /* RatingView */,
+				EDEA48E21C34BB470025FDA6 /* ProfileView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		EDEA48F91C34E2CF0025FDA6 /* RatingView */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48FA1C34E2DC0025FDA6 /* RatingView.xib */,
+				EDEA48FC1C34E2EB0025FDA6 /* RatingView.h */,
+				EDEA48FD1C34E2EB0025FDA6 /* RatingView.m */,
+			);
+			name = RatingView;
+			sourceTree = "<group>";
+		};
+		EDEA48FF1C34E2F20025FDA6 /* RatingModel */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA49001C34E3000025FDA6 /* RatingModel.h */,
+				EDEA49011C34E3000025FDA6 /* RatingModel.m */,
+			);
+			name = RatingModel;
+			sourceTree = "<group>";
+		};
+		EDEA49031C34EBD80025FDA6 /* CommentCellView */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA49041C34EBF20025FDA6 /* CommentCellView.h */,
+				EDEA49051C34EBF20025FDA6 /* CommentCellView.m */,
+				EDEA49071C34EC400025FDA6 /* CommentCellView.xib */,
+			);
+			name = CommentCellView;
+			sourceTree = "<group>";
+		};
+		EDEA49091C34F2860025FDA6 /* PostView */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA490A1C34F2920025FDA6 /* PostView.xib */,
+				EDEA490C1C34F2A20025FDA6 /* PostView.h */,
+				EDEA490D1C34F2A20025FDA6 /* PostView.m */,
+			);
+			name = PostView;
+			sourceTree = "<group>";
+		};
+		EDEA490F1C34F3910025FDA6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EDEA48F51C34E1A30025FDA6 /* PostCellView */,
+				EDEA49031C34EBD80025FDA6 /* CommentCellView */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,14 +626,19 @@
 			files = (
 				ED0EFE741C323BD400C9B600 /* Main.storyboard in Resources */,
 				ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */,
+				EDEA48F71C34E1B90025FDA6 /* PostCellView.xib in Resources */,
 				ED7EB0621C289AF8004BAF7A /* SlidingView.xib in Resources */,
 				ED0EFE8C1C3326D100C9B600 /* ProfilePanelView.xib in Resources */,
+				EDEA49081C34EC400025FDA6 /* CommentCellView.xib in Resources */,
 				ED0EFE931C332A1E00C9B600 /* default.png in Resources */,
 				ED0EFE831C32544E00C9B600 /* profile-pic.jpg in Resources */,
 				ED7EB0371C289443004BAF7A /* Assets.xcassets in Resources */,
 				ED7EB0651C28D496004BAF7A /* IntroViews.xib in Resources */,
+				EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */,
 				ED0EFE7E1C3244EA00C9B600 /* RegisterViews.xib in Resources */,
+				EDEA48FB1C34E2DC0025FDA6 /* RatingView.xib in Resources */,
 				ED7EB0351C289443004BAF7A /* Testing.storyboard in Resources */,
+				EDEA490B1C34F2920025FDA6 /* PostView.xib in Resources */,
 				ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,10 +666,16 @@
 			files = (
 				ED0EFE811C32452100C9B600 /* PersonalInfoView.m in Sources */,
 				ED0EFE971C33787E00C9B600 /* PopularPeopleView.m in Sources */,
+				EDEA48F41C34E19B0025FDA6 /* PostCellView.m in Sources */,
 				ED0EFE8A1C3326B900C9B600 /* ProfilePanelView.m in Sources */,
 				ED7EB0321C289442004BAF7A /* RegisterViewController.m in Sources */,
+				EDEA48E01C34BB0E0025FDA6 /* ProfileView.m in Sources */,
+				EDEA490E1C34F2A20025FDA6 /* PostView.m in Sources */,
 				ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */,
 				ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */,
+				EDEA48EC1C34DEF10025FDA6 /* CommentModel.m in Sources */,
+				EDEA48F01C34E0090025FDA6 /* ImagePostModel.m in Sources */,
+				EDEA49021C34E3000025FDA6 /* RatingModel.m in Sources */,
 				ED0F41301C349D7000570703 /* MapViewController.m in Sources */,
 				ED0F412D1C349CD200570703 /* FeedViewController.m in Sources */,
 				ED0F41331C349D7E00570703 /* PostViewController.m in Sources */,
@@ -527,13 +686,16 @@
 				ED0EFE711C31F34400C9B600 /* SaveViewController.m in Sources */,
 				ED0F41361C349D8800570703 /* MeViewController.m in Sources */,
 				ED0EFE771C323C0000C9B600 /* IntroductionViewController.m in Sources */,
+				EDEA49061C34EBF20025FDA6 /* CommentCellView.m in Sources */,
 				ED7EB02F1C289442004BAF7A /* LoginViewController.m in Sources */,
 				ED0EFE911C3327F900C9B600 /* UserModel.m in Sources */,
 				ED0EFE7B1C3244BA00C9B600 /* RegisterUserViewController.m in Sources */,
 				ED0F41201C347E3500570703 /* FriendModel.m in Sources */,
+				EDEA48E91C34DEE00025FDA6 /* PostModel.m in Sources */,
 				ED7EB0291C289442004BAF7A /* main.m in Sources */,
 				ED0F41231C34821000570703 /* SignInViewController.m in Sources */,
 				ED7EB0601C289AE6004BAF7A /* SlidingViewController.m in Sources */,
+				EDEA48FE1C34E2EB0025FDA6 /* RatingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

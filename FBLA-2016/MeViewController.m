@@ -7,21 +7,57 @@
 //
 
 #import "MeViewController.h"
+#import "SlidingViewController.h"
+#import "UserModel.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ProfileView.h"
 
 @interface MeViewController ()
 
 @end
 
-@implementation MeViewController
+@implementation MeViewController {
+    NSString *docPath;
+    
+    UserModel *user;
+    
+    SlidingViewController *slidingView;
+    
+    UIView *myPostsView;
+    UIView *myCommentsView;
+}
+
+#define kDataKey        @"Data"
+#define kDataFile       @"data.plist"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    user = [self getCurrentUser];
+    ProfileView *profileView = [[ProfileView alloc] initWithFrame:self.view.frame andUser:user.ID];
+    [self.view addSubview:profileView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(UserModel *) getCurrentUser {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    docPath = [paths objectAtIndex:0];
+    docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+    
+    NSString *dataPath = [docPath stringByAppendingPathComponent:kDataFile];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
+    if (codedData == nil) {
+        return nil;
+    }
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+    UserModel *save = [unarchiver decodeObjectForKey:kDataKey];
+    [unarchiver finishDecoding];
+    
+    return save;
 }
 
 /*

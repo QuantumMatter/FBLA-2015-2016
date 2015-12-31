@@ -1,5 +1,5 @@
 //
-//  MeViewController.h
+//  ProfileView.h
 //  FBLA-2016
 //
 //  Created by David Kopala on 12/30/15.
@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SlidingViewController.h"
+#import "PostCellView.h"
 
-@interface MeViewController : UIViewController <SlidingViewDelegate>
+@interface ProfileView : UIView <SlidingViewDelegate>
+
+-(id) initWithFrame:(CGRect)frame andUser:(NSInteger)uID;
 
 @end

@@ -22,24 +22,22 @@
     NSString *docPath;
     
     NSArray *introViews;
+    
+    UserModel *currUser;
 }
 
 #define kDataKey        @"Data"
 #define kDataFile       @"data.plist"
 
 - (void)viewDidLoad {
-    UserModel *currUser = [self data];
+    [super viewDidLoad];
+    
+    currUser = [self data];
     if (currUser != nil) {
         NSLog(@"User Already Exists");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Test"
-                                                        message:@"User Already Exists"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
-        [alert show];
-        //[self performSegueWithIdentifier:@"" sender:self];
+        [self performSegueWithIdentifier:@"presentHome" sender:self];
+        return;
     }
-    [super viewDidLoad];
     
     introViews = [[NSBundle mainBundle] loadNibNamed:@"IntroViews" owner:self options:nil];
     
@@ -54,6 +52,12 @@
     [signInMenu.signInButton addTarget:self action:@selector(signInPressed:) forControlEvents:UIControlEventTouchUpInside];
     [signInMenu.registerButton addTarget:self action:@selector(registerPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:signInMenu];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    if (currUser != nil) {
+        [self performSegueWithIdentifier:@"presentHome" sender:self];
+    }
 }
 
 -(UIView *) viewForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {
