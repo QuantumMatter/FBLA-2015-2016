@@ -44,6 +44,13 @@
 		ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0671C28D4EA004BAF7A /* IntroViewController.m */; };
 		ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */; };
 		ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */; };
+		ED9410001C35B6EF00065168 /* TagView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED940FFF1C35B6EF00065168 /* TagView.m */; };
+		ED9410021C35B6FC00065168 /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9410011C35B6FC00065168 /* TagView.xib */; };
+		ED9410051C35B80600065168 /* TagCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9410041C35B80600065168 /* TagCellView.xib */; };
+		ED9410081C35B81500065168 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9410071C35B81500065168 /* TagCellView.m */; };
+		ED94100C1C35B85100065168 /* TagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED94100B1C35B85100065168 /* TagModel.m */; };
+		ED9410101C35BCE700065168 /* TagIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED94100F1C35BCE700065168 /* TagIconView.m */; };
+		ED9410121C35BD3D00065168 /* TagIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9410111C35BD3D00065168 /* TagIconView.xib */; };
 		EDEA48E01C34BB0E0025FDA6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */; };
 		EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */; };
 		EDEA48E91C34DEE00025FDA6 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48E81C34DEE00025FDA6 /* PostModel.m */; };
@@ -143,6 +150,17 @@
 		ED7EB06A1C28D7C4004BAF7A /* SignInMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInMenuView.h; sourceTree = "<group>"; };
 		ED7EB06B1C28D7C4004BAF7A /* SignInMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInMenuView.m; sourceTree = "<group>"; };
 		ED7EB06D1C28D7D5004BAF7A /* SignInMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInMenuView.xib; sourceTree = "<group>"; };
+		ED940FFE1C35B6EF00065168 /* TagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagView.h; sourceTree = "<group>"; };
+		ED940FFF1C35B6EF00065168 /* TagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagView.m; sourceTree = "<group>"; };
+		ED9410011C35B6FC00065168 /* TagView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagView.xib; sourceTree = "<group>"; };
+		ED9410041C35B80600065168 /* TagCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCellView.xib; sourceTree = "<group>"; };
+		ED9410061C35B81500065168 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
+		ED9410071C35B81500065168 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
+		ED94100A1C35B85100065168 /* TagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagModel.h; sourceTree = "<group>"; };
+		ED94100B1C35B85100065168 /* TagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagModel.m; sourceTree = "<group>"; };
+		ED94100E1C35BCE700065168 /* TagIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIconView.h; sourceTree = "<group>"; };
+		ED94100F1C35BCE700065168 /* TagIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagIconView.m; sourceTree = "<group>"; };
+		ED9410111C35BD3D00065168 /* TagIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagIconView.xib; sourceTree = "<group>"; };
 		EDEA48DE1C34BB0E0025FDA6 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
 		EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -247,6 +265,7 @@
 		ED0EFE8D1C3327D700C9B600 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ED9410091C35B83E00065168 /* TagModel */,
 				EDEA48FF1C34E2F20025FDA6 /* RatingModel */,
 				EDEA48ED1C34DFF80025FDA6 /* ImagePostModel */,
 				EDEA48E61C34DEC80025FDA6 /* CommentModel */,
@@ -414,6 +433,45 @@
 			name = "Sign In Menu";
 			sourceTree = "<group>";
 		};
+		ED940FFD1C35B6CA00065168 /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				ED940FFE1C35B6EF00065168 /* TagView.h */,
+				ED940FFF1C35B6EF00065168 /* TagView.m */,
+				ED9410011C35B6FC00065168 /* TagView.xib */,
+			);
+			name = TagView;
+			sourceTree = "<group>";
+		};
+		ED9410031C35B7F300065168 /* TagCellView */ = {
+			isa = PBXGroup;
+			children = (
+				ED9410041C35B80600065168 /* TagCellView.xib */,
+				ED9410061C35B81500065168 /* TagCellView.h */,
+				ED9410071C35B81500065168 /* TagCellView.m */,
+			);
+			name = TagCellView;
+			sourceTree = "<group>";
+		};
+		ED9410091C35B83E00065168 /* TagModel */ = {
+			isa = PBXGroup;
+			children = (
+				ED94100A1C35B85100065168 /* TagModel.h */,
+				ED94100B1C35B85100065168 /* TagModel.m */,
+			);
+			name = TagModel;
+			sourceTree = "<group>";
+		};
+		ED94100D1C35BCCB00065168 /* TagIconView */ = {
+			isa = PBXGroup;
+			children = (
+				ED94100E1C35BCE700065168 /* TagIconView.h */,
+				ED94100F1C35BCE700065168 /* TagIconView.m */,
+				ED9410111C35BD3D00065168 /* TagIconView.xib */,
+			);
+			name = TagIconView;
+			sourceTree = "<group>";
+		};
 		EDEA48E21C34BB470025FDA6 /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +522,9 @@
 		EDEA48F81C34E2820025FDA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ED94100D1C35BCCB00065168 /* TagIconView */,
 				EDEA490F1C34F3910025FDA6 /* Cells */,
+				ED940FFD1C35B6CA00065168 /* TagView */,
 				EDEA49091C34F2860025FDA6 /* PostView */,
 				EDEA48F91C34E2CF0025FDA6 /* RatingView */,
 				EDEA48E21C34BB470025FDA6 /* ProfileView */,
@@ -514,6 +574,7 @@
 		EDEA490F1C34F3910025FDA6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ED9410031C35B7F300065168 /* TagCellView */,
 				EDEA48F51C34E1A30025FDA6 /* PostCellView */,
 				EDEA49031C34EBD80025FDA6 /* CommentCellView */,
 			);
@@ -625,13 +686,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0EFE741C323BD400C9B600 /* Main.storyboard in Resources */,
+				ED9410051C35B80600065168 /* TagCellView.xib in Resources */,
 				ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */,
 				EDEA48F71C34E1B90025FDA6 /* PostCellView.xib in Resources */,
 				ED7EB0621C289AF8004BAF7A /* SlidingView.xib in Resources */,
 				ED0EFE8C1C3326D100C9B600 /* ProfilePanelView.xib in Resources */,
+				ED9410021C35B6FC00065168 /* TagView.xib in Resources */,
 				EDEA49081C34EC400025FDA6 /* CommentCellView.xib in Resources */,
 				ED0EFE931C332A1E00C9B600 /* default.png in Resources */,
 				ED0EFE831C32544E00C9B600 /* profile-pic.jpg in Resources */,
+				ED9410121C35BD3D00065168 /* TagIconView.xib in Resources */,
 				ED7EB0371C289443004BAF7A /* Assets.xcassets in Resources */,
 				ED7EB0651C28D496004BAF7A /* IntroViews.xib in Resources */,
 				EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */,
@@ -672,11 +736,15 @@
 				EDEA48E01C34BB0E0025FDA6 /* ProfileView.m in Sources */,
 				EDEA490E1C34F2A20025FDA6 /* PostView.m in Sources */,
 				ED7EB06C1C28D7C4004BAF7A /* SignInMenuView.m in Sources */,
+				ED94100C1C35B85100065168 /* TagModel.m in Sources */,
 				ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */,
 				EDEA48EC1C34DEF10025FDA6 /* CommentModel.m in Sources */,
 				EDEA48F01C34E0090025FDA6 /* ImagePostModel.m in Sources */,
+				ED9410081C35B81500065168 /* TagCellView.m in Sources */,
 				EDEA49021C34E3000025FDA6 /* RatingModel.m in Sources */,
+				ED9410001C35B6EF00065168 /* TagView.m in Sources */,
 				ED0F41301C349D7000570703 /* MapViewController.m in Sources */,
+				ED9410101C35BCE700065168 /* TagIconView.m in Sources */,
 				ED0F412D1C349CD200570703 /* FeedViewController.m in Sources */,
 				ED0F41331C349D7E00570703 /* PostViewController.m in Sources */,
 				ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */,

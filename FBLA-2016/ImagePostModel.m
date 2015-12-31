@@ -7,6 +7,8 @@
 //
 
 #import "ImagePostModel.h"
+#import "TagModel.h"
+#import "TagIconView.h"
 
 @implementation ImagePostModel
 
@@ -53,6 +55,7 @@
         default:
             break;
     }
+    [self loadTags];
 }
 
 -(void) loadOnePic {
@@ -95,6 +98,20 @@
     UIImageView *third = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, halfHeight, halfWidth, halfHeight)];
     third.image = [images objectAtIndex:2];
     [view addSubview:third];
+}
+
+-(void) loadTags {
+    NSMutableArray *tags = [self getMyTags];
+    for (int i = 0; i < [tags count]; i++) {
+        TagModel *tag = [tags objectAtIndex:i];
+        TagIconView *tagIcon = [[TagIconView alloc] initWIthNumber:tag.number];
+        tagIcon.center = CGPointMake(view.frame.size.width * tag.xPos, view.frame.size.height * tag.yPos);
+        [view addSubview:tagIcon];
+    }
+}
+
+-(NSMutableArray *) getMyTags {
+    return nil;
 }
 
 @end

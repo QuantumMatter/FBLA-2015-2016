@@ -19,6 +19,7 @@
 
 @synthesize profilePic;
 @synthesize profilePicSrc;
+@synthesize profilePicSrcLocal;
 
 @synthesize firstName;
 @synthesize lastName;
@@ -65,6 +66,10 @@
 
 -(id) initWithID:(NSInteger)_ID {
     self = [super init];
+    ID = _ID;
+    [self loadCounterparts];
+    
+    [self loadComponents];
     
     /*profilePicSrc = profileSrc;
     firstName = fName;
@@ -80,6 +85,21 @@
         });
     });*/
     return self;
+}
+
+-(void) loadCounterparts {
+    
+}
+
+-(void) loadComponents {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(profilePicReady)
+                                                 name:profilePicSrcLocal
+                                               object:nil];
+}
+
+-(void) profilePicReady {
+    profilePic = [UIImage imageWithContentsOfFile:profilePicSrcLocal];
 }
 
 -(void) test1 {
@@ -162,13 +182,54 @@
         NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         profilePicSrc = response;
         NSLog(response);
-        [delegate user:self receivedNewID:-1];
         [self pushModel];
     } else if (connection == modelConn) {
         NSLog(@"Connection Complete");
         NSString *resposne = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(resposne);
+        UserModel *newUser = [[UserModel alloc] initWithJSONString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+        if (newUser.ID != ID) {
+            [self copyFromUser:newUser];
+            [delegate user:self receivedNewID:newUser.ID];
+        }
     }
+}
+
+-(void) copyFromUser:(UserModel *)newUser {
+    ID = newUser.ID;
+    
+    profilePicSrc = newUser.profilePicSrc;
+    
+}
+
+-(id) initWithJSONString:(NSString *)jString {
+    self = [super init];
+    NSError *error;
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:[jString dataUsingEncoding:NSUTF8StringEncoding]
+                                                         options:kNilOptions
+                                                           error:&error];
+    NSDictionary *dict = [jsonArray objectAtIndex:0];
+    ID = [[dict objectForKey:kIDKey] integerValue];
+    
+    profilePicSrc = [dict objectForKey:kProfilePicSrcKey];
+    
+    firstName = [dict objectForKey:kFirstNameKey];
+    lastName = [dict objectForKey:kLastNameKey];
+    email = [dict objectForKey:kEmailKey];
+    
+    latitude = [[dict objectForKey:kLatitudeKey] floatValue];
+    longitude = [[dict objectForKey:kLongitudeKey] floatValue];
+    
+    followers = [[dict objectForKey:kFollowersKey] integerValue];
+    following = [[dict objectForKey:kFollowingKey] integerValue];
+    
+    zipCode = [[dict objectForKey:kZipCodeKey] integerValue];
+    
+    gender = [dict objectForKey:kGenderKey];
+    
+    [self loadComponents];
+    
+    return self;
 }
 
 @end

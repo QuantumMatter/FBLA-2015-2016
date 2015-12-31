@@ -22,6 +22,8 @@
 
 @property CGRect *frameForViews;
 
+@property NSString *datePosted;
+
 -(id) initWithID:(NSInteger)_ID andFrameForView:(CGRect)frame;
 -(id) initWithID:(NSInteger)_ID;
 

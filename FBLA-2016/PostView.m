@@ -13,6 +13,7 @@
 #import "RatingView.h"
 #import "CommentModel.h"
 #import "CommentCellView.h"
+#import "TagView.h"
 
 @implementation PostView {
     PostModel *post;
@@ -62,6 +63,11 @@
     
     yPos += imagesContainer.frame.size.height;
     
+    TagView *tagView = [[TagView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 150) andPostID:post.ID];
+    [self addSubview:tagView];
+    
+    yPos += tagView.frame.size.height;
+    
     RatingView *ratingView = [[RatingView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 0.15 * self.frame.size.width)];
     [self addSubview:ratingView];
     
@@ -69,6 +75,8 @@
     
     UIView *commentsView = [self commentsViewWithLength:(self.frame.size.height - yPos)];
     [self addSubview:commentsView];
+    
+    yPos += commentsView.frame.size.height;
 }
 
 -(UIView *) commentsViewWithLength:(float)length {

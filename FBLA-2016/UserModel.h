@@ -23,6 +23,7 @@
 
 @property UIImage *profilePic;
 @property NSString *profilePicSrc;
+@property NSString *profilePicSrcLocal;
 
 @property NSString *firstName;
 @property NSString *lastName;
@@ -41,6 +42,7 @@
 @property id<UserModelDelegate> delegate;
 
 -(id) initWithID:(NSInteger)_ID;
+-(id) initWithJSONString:(NSString *)jString;
 
 -(void) test1;
 -(void) test2;
