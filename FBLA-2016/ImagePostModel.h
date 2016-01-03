@@ -23,13 +23,17 @@ typedef enum  ImagePostType {
 @property ImagePostType type;
 
 @property NSMutableArray *images;
+@property NSMutableArray *imageSources;
 
-@property NSInteger *postID;
+@property NSInteger postID;
 @property PostModel *post;
 
 @property UIView *view;
 
 -(id) initWithID:(NSInteger)_ID;
--(id) initWithID:(NSInteger)_ID andFrame:(CGRect)frame;
+
+-(id) initWithDBArray:(NSArray *)array;
+
+-(void) addImagePost:(ImagePostModel *)model;
 
 @end

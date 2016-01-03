@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImagePostView.h"
 
-@interface PostViewController : UIViewController
+@interface PostViewController : UIViewController <ImagePostDelegate>
 
 @end

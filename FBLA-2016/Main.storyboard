@@ -237,7 +237,7 @@
                     <navigationItem key="navigationItem" id="5fz-8v-tjw">
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="Eyw-qQ-X7c">
                             <connections>
-                                <action selector="signOut:" destination="lzj-kb-VTy" id="Yhg-0F-DNG"/>
+                                <action selector="signOut:" destination="lzj-kb-VTy" id="jfl-ZR-qO3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

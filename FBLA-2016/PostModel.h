@@ -27,4 +27,6 @@
 -(id) initWithID:(NSInteger)_ID andFrameForView:(CGRect)frame;
 -(id) initWithID:(NSInteger)_ID;
 
+-(id) initWithPostArray:(NSArray *)array;
+
 @end

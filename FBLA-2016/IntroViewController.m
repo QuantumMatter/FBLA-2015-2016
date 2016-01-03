@@ -9,6 +9,9 @@
 #import "IntroViewController.h"
 #import "SlidingViewController.h"
 
+#import "PostCellView.h"
+#import "PostModel.h"
+
 @interface IntroViewController ()
 
 @end

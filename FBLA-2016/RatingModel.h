@@ -21,4 +21,6 @@
 @property NSInteger styleRating;
 @property NSInteger appRating;
 
+-(void) pushToServer;
+
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CommentModel.h"
 
-@interface CommentCellView : UIView
+@interface CommentCellView : UIView <UIGestureRecognizerDelegate>
 
 -(id) initWithFrame:(CGRect)frame andComment:(CommentModel *)comm;
 

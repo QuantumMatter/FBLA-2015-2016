@@ -51,6 +51,11 @@
 		ED94100C1C35B85100065168 /* TagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED94100B1C35B85100065168 /* TagModel.m */; };
 		ED9410101C35BCE700065168 /* TagIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED94100F1C35BCE700065168 /* TagIconView.m */; };
 		ED9410121C35BD3D00065168 /* TagIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9410111C35BD3D00065168 /* TagIconView.xib */; };
+		ED9410151C3701A600065168 /* ImagePostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9410141C3701A600065168 /* ImagePostView.xib */; };
+		ED9410181C3701B900065168 /* ImagePostView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9410171C3701B900065168 /* ImagePostView.m */; };
+		ED94101C1C370C3100065168 /* fbla.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = ED94101B1C370C3100065168 /* fbla.sqlite */; };
+		EDB8C7C01C38BB6800464EAB /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = EDB8C7BF1C38BB6800464EAB /* camera.png */; };
+		EDB8C7C31C38E2B100464EAB /* DBDump.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB8C7C21C38E2B100464EAB /* DBDump.m */; };
 		EDEA48E01C34BB0E0025FDA6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */; };
 		EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */; };
 		EDEA48E91C34DEE00025FDA6 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48E81C34DEE00025FDA6 /* PostModel.m */; };
@@ -161,6 +166,13 @@
 		ED94100E1C35BCE700065168 /* TagIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagIconView.h; sourceTree = "<group>"; };
 		ED94100F1C35BCE700065168 /* TagIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagIconView.m; sourceTree = "<group>"; };
 		ED9410111C35BD3D00065168 /* TagIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagIconView.xib; sourceTree = "<group>"; };
+		ED9410141C3701A600065168 /* ImagePostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePostView.xib; sourceTree = "<group>"; };
+		ED9410161C3701B900065168 /* ImagePostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePostView.h; sourceTree = "<group>"; };
+		ED9410171C3701B900065168 /* ImagePostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePostView.m; sourceTree = "<group>"; };
+		ED94101B1C370C3100065168 /* fbla.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = fbla.sqlite; sourceTree = "<group>"; };
+		EDB8C7BF1C38BB6800464EAB /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		EDB8C7C11C38E2B000464EAB /* DBDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDump.h; sourceTree = "<group>"; };
+		EDB8C7C21C38E2B100464EAB /* DBDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDump.m; sourceTree = "<group>"; };
 		EDEA48DE1C34BB0E0025FDA6 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
 		EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -288,6 +300,8 @@
 		ED0EFE941C332CB800C9B600 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				EDB8C7C11C38E2B000464EAB /* DBDump.h */,
+				EDB8C7C21C38E2B100464EAB /* DBDump.m */,
 			);
 			name = Parsers;
 			sourceTree = "<group>";
@@ -353,10 +367,12 @@
 		ED7EB0261C289442004BAF7A /* FBLA-2016 */ = {
 			isa = PBXGroup;
 			children = (
+				ED94101B1C370C3100065168 /* fbla.sqlite */,
 				ED0EFE941C332CB800C9B600 /* Parsers */,
 				ED0EFE8D1C3327D700C9B600 /* Models */,
 				ED0EFE871C33269900C9B600 /* ProfilePanelView */,
 				ED0EFE921C332A1E00C9B600 /* default.png */,
+				EDB8C7BF1C38BB6800464EAB /* camera.png */,
 				ED0EFE821C32544D00C9B600 /* profile-pic.jpg */,
 				ED0EFE7C1C3244C100C9B600 /* RegisterViews */,
 				ED7EB0691C28D739004BAF7A /* Sign In Menu */,
@@ -472,6 +488,16 @@
 			name = TagIconView;
 			sourceTree = "<group>";
 		};
+		ED9410131C37019600065168 /* ImagePostView */ = {
+			isa = PBXGroup;
+			children = (
+				ED9410141C3701A600065168 /* ImagePostView.xib */,
+				ED9410161C3701B900065168 /* ImagePostView.h */,
+				ED9410171C3701B900065168 /* ImagePostView.m */,
+			);
+			name = ImagePostView;
+			sourceTree = "<group>";
+		};
 		EDEA48E21C34BB470025FDA6 /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,8 +548,9 @@
 		EDEA48F81C34E2820025FDA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ED94100D1C35BCCB00065168 /* TagIconView */,
 				EDEA490F1C34F3910025FDA6 /* Cells */,
+				ED9410131C37019600065168 /* ImagePostView */,
+				ED94100D1C35BCCB00065168 /* TagIconView */,
 				ED940FFD1C35B6CA00065168 /* TagView */,
 				EDEA49091C34F2860025FDA6 /* PostView */,
 				EDEA48F91C34E2CF0025FDA6 /* RatingView */,
@@ -685,6 +712,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB8C7C01C38BB6800464EAB /* camera.png in Resources */,
 				ED0EFE741C323BD400C9B600 /* Main.storyboard in Resources */,
 				ED9410051C35B80600065168 /* TagCellView.xib in Resources */,
 				ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */,
@@ -696,11 +724,13 @@
 				ED0EFE931C332A1E00C9B600 /* default.png in Resources */,
 				ED0EFE831C32544E00C9B600 /* profile-pic.jpg in Resources */,
 				ED9410121C35BD3D00065168 /* TagIconView.xib in Resources */,
+				ED94101C1C370C3100065168 /* fbla.sqlite in Resources */,
 				ED7EB0371C289443004BAF7A /* Assets.xcassets in Resources */,
 				ED7EB0651C28D496004BAF7A /* IntroViews.xib in Resources */,
 				EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */,
 				ED0EFE7E1C3244EA00C9B600 /* RegisterViews.xib in Resources */,
 				EDEA48FB1C34E2DC0025FDA6 /* RatingView.xib in Resources */,
+				ED9410151C3701A600065168 /* ImagePostView.xib in Resources */,
 				ED7EB0351C289443004BAF7A /* Testing.storyboard in Resources */,
 				EDEA490B1C34F2920025FDA6 /* PostView.xib in Resources */,
 				ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */,
@@ -748,6 +778,7 @@
 				ED0F412D1C349CD200570703 /* FeedViewController.m in Sources */,
 				ED0F41331C349D7E00570703 /* PostViewController.m in Sources */,
 				ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */,
+				ED9410181C3701B900065168 /* ImagePostView.m in Sources */,
 				ED0EFE861C33268F00C9B600 /* FindFriendsView.m in Sources */,
 				ED0F41261C348DA900570703 /* DBManager.m in Sources */,
 				ED43A7011C31B857008C2C79 /* SaveTest.m in Sources */,
@@ -760,6 +791,7 @@
 				ED0EFE7B1C3244BA00C9B600 /* RegisterUserViewController.m in Sources */,
 				ED0F41201C347E3500570703 /* FriendModel.m in Sources */,
 				EDEA48E91C34DEE00025FDA6 /* PostModel.m in Sources */,
+				EDB8C7C31C38E2B100464EAB /* DBDump.m in Sources */,
 				ED7EB0291C289442004BAF7A /* main.m in Sources */,
 				ED0F41231C34821000570703 /* SignInViewController.m in Sources */,
 				ED7EB0601C289AE6004BAF7A /* SlidingViewController.m in Sources */,

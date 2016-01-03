@@ -45,8 +45,10 @@
     float midY = self.frame.size.height / 2;
     float xSpace = 0.15 * self.frame.size.width;
     
+    UserModel *currUser = [self getCurrentUser];
+    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.8 * self.frame.size.height, 0.8 * self.frame.size.height)];
-    imageView.image = comment.user.profilePic;
+    imageView.image = currUser.profilePic;
     imageView.center = CGPointMake(midY, midY);
     imageView.layer.cornerRadius = imageView.frame.size.height / 2;
     [self addSubview:imageView];
@@ -67,6 +69,28 @@
 
 -(void) sendNewComment {
     
+}
+
+-(UserModel *) getCurrentUser {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [paths objectAtIndex:0];
+    docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+    
+    NSString *dataPath = [docPath stringByAppendingPathComponent:@"data.plist"];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
+    if (codedData == nil) {
+        return nil;
+    }
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+    UserModel *save = [unarchiver decodeObjectForKey:@"Data"];
+    [unarchiver finishDecoding];
+    
+    return save;
+}
+
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
 }
 
 @end

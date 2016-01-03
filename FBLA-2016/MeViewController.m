@@ -60,6 +60,14 @@
     return save;
 }
 
+- (IBAction)signOut:(id)sender {
+    NSError *error;
+    BOOL success = [[NSFileManager defaultManager] removeItemAtPath:docPath error:&error];
+    if (success) {
+        [self performSegueWithIdentifier:@"presentIntroduction" sender:self];
+    }
+}
+
 /*
 #pragma mark - Navigation
 

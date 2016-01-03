@@ -8,6 +8,7 @@
 
 #import "SignInViewController.h"
 #import "UserModel.h"
+#import "DBManager.h"
 
 @interface SignInViewController ()
 
@@ -15,6 +16,8 @@
 
 @implementation SignInViewController {
     NSString *docPath;
+    
+    DBManager *manager;
 }
 
 #define kDataKey        @"Data"
@@ -48,6 +51,40 @@
     UserModel *saveTest = [[UserModel alloc] init];
     [saveTest test1];
     
+    [self checkUser];
+}
+
+-(void) checkUser {
+    manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    NSString *email = emailField.text;
+    NSArray *array = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * FROM users WHERE Email like \"%@\"", email]];
+    if (!([array count] > 0)) {
+        [self badUser];
+        return;
+    }
+    UserModel *temp = [[UserModel alloc] initWithDBArray:[array objectAtIndex:0]];
+    
+    NSString *pass = passwordField.text;
+    array = [array objectAtIndex:0];
+    if ([pass isEqualToString:[array objectAtIndex:11]]) {
+        [self userOK:temp];
+    } else {
+        [self badUser];
+    }
+}
+
+-(void) badUser {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Login"
+                                                    message:@"Incorrect Email or Password"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void) userOK:(UserModel *)user {
+    //[manager executeQuery:@"UPDATE users SET Password=\"\""];
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     docPath = [paths objectAtIndex:0];
     docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
@@ -59,7 +96,7 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     //NSMutableData *_data = [[NSMutableData alloc] init];
-    [archiver encodeObject:saveTest forKey:kDataKey];
+    [archiver encodeObject:user forKey:kDataKey];
     [archiver finishEncoding];
     [data writeToFile:dataPath atomically:YES];
     [self performSegueWithIdentifier:@"presentHome" sender:self];

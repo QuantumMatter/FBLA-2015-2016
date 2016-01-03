@@ -10,5 +10,34 @@
 
 @implementation CommentModel
 
+@synthesize ID;
+@synthesize userID;
+@synthesize user;
+@synthesize postID;
+@synthesize post;
+@synthesize comment;
+
+-(id) initWithDBArray:(NSArray *)array {
+    self = [super init];
+    
+    if ([array count] == 1) {
+        array = [array objectAtIndex:0];
+    }
+    
+    ID = [[array objectAtIndex:0] integerValue];
+    userID = [[array objectAtIndex:1] integerValue];
+    postID = [[array objectAtIndex:2] integerValue];
+    
+    comment = [array objectAtIndex:3];
+    
+    [self loadComponents];
+    
+    return self;
+}
+
+-(void) loadComponents {
+    user = [[UserModel alloc] initWithID:userID];
+    post = [[PostModel alloc] initWithID:postID];
+}
 
 @end

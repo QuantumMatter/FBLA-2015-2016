@@ -75,6 +75,8 @@
 }
 
 -(void) loadComponents {
+    currentFrame = CGRectMake(0, 0, currentFrame.size.width, currentFrame.size.height);
+    
     active = YES;
     
     secondaryUnderSpacing = 10;

@@ -7,16 +7,21 @@
 //
 
 #import "PostViewController.h"
+#import "ImagePostView.h"
 
 @interface PostViewController ()
 
 @end
 
-@implementation PostViewController
+@implementation PostViewController {
+    NSMutableArray *imagePostViews;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    imagePostViews = [[NSMutableArray alloc] init];
+    
 }
 
 - (void)didReceiveMemoryWarning {

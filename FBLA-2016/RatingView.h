@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RatingModel.h"
 
 @interface RatingView : UIView
+
+@property NSMutableArray *letters;
+@property NSMutableArray *icons;
+@property NSMutableArray *titles;
+
+@property UISlider *slider;
+
+@property RatingModel *rate;
+
+-(id) initWithFrame:(CGRect)frame andRating:(RatingModel *)rat;
 
 @end

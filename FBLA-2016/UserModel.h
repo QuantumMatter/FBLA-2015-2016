@@ -41,6 +41,7 @@
 
 @property id<UserModelDelegate> delegate;
 
+-(id) initWithDBArray:(NSArray *)userArray;
 -(id) initWithID:(NSInteger)_ID;
 -(id) initWithJSONString:(NSString *)jString;
 

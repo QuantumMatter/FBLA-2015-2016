@@ -10,4 +10,8 @@
 
 @implementation RatingModel
 
+-(void) pushToServer {
+    
+}
+
 @end

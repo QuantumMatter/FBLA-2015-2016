@@ -14,6 +14,7 @@
 #import "PostCellView.h"
 #import "CommentCellView.h"
 #import "CommentModel.h"
+#import "DBManager.h"
 
 @implementation ProfileView {
     NSString *docPath;
@@ -26,18 +27,14 @@
     UIView *myPostsView;
     UIView *myCommentsView;
     CGRect slidingViewFrame;
+    
+    DBManager *manager;
 }
 
 #define kDataKey        @"Data"
 #define kDataFile       @"data.plist"
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+@synthesize parentController;
 
 -(id) initWithFrame:(CGRect)frame andUser:(NSInteger)uID {
     self = [[[NSBundle mainBundle] loadNibNamed:@"ProfileView" owner:self options:nil] objectAtIndex:0];
@@ -48,9 +45,9 @@
 }
 
 -(void) loadComponents {
-    user = [self getUserWithID:userID];
+    user = [[UserModel alloc] initWithID:userID];
     
-    float yPos = 0;
+    float yPos = 50;
     
     UIView *view = self;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
@@ -63,6 +60,9 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, yPos, view.frame.size.width, 30)];
     NSString *name = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     nameLabel.text = name;
+    nameLabel.font = [nameLabel.font fontWithSize:25];
+    [nameLabel sizeToFit];
+    nameLabel.center = CGPointMake(self.frame.size.width / 2, yPos += (nameLabel.frame.size.height / 2));
     [self addSubview:nameLabel];
     yPos += nameLabel.frame.size.height;
     
@@ -73,9 +73,14 @@
     [self loadMyComments];
     [self loadMyPosts];
     
+    myPostsView.backgroundColor = [UIColor redColor];
+    
     slidingViewFrame = CGRectMake(0, yPos, view.frame.size.width, view.frame.size.height - yPos);
     slidingView = [[SlidingViewController alloc] initWithFrame:slidingViewFrame andDelegate:self];
     [self addSubview:slidingView];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:slidingView action:@selector(swiped:)];
+    [slidingView addGestureRecognizer:pan];
 }
 
 -(UIView *) viewForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {
@@ -126,13 +131,16 @@
     NSMutableArray *posts = [self getMyPosts];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, slidingViewFrame.size.height)];
+    scrollView.clipsToBounds = NO;
     
-    float yPos = 8;
+    float yPos = 70;
     
     for (int i = 0; i < [posts count]; i++) {
         PostModel *post = [posts objectAtIndex:i];
-        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 150);
+        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 75);
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTappedPostCell:)];
         PostCellView *postCell = [[PostCellView alloc] initWithFrame:frame andPost:post];
+        [postCell addGestureRecognizer:tap];
         postCell.delegate = self;
         [scrollView addSubview:postCell];
         yPos += 8 + postCell.frame.size.height;
@@ -143,19 +151,33 @@
 }
 
 -(NSMutableArray *) getMyPosts {
-    return nil;
+    if (manager == nil) {
+        manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    }
+    
+    NSArray *array = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * FROM Posts WHERE UserID LIKE %ld", userID]];
+    NSMutableArray *posts = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [array count]; i++) {
+        NSArray *postArray = [array objectAtIndex:i];
+        PostModel *post = [[PostModel alloc] initWithPostArray:postArray];
+        [posts addObject:post];
+    }
+    
+    return posts;
 }
 
 -(void) loadMyComments {
     NSMutableArray *comments = [self getMyComments];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, slidingViewFrame.size.height)];
+    scrollView.clipsToBounds = NO;
     
-    float yPos = 8;
+    float yPos = 70;
     
     for (int i = 0; i < [comments count]; i++) {
         CommentModel *comment = [comments objectAtIndex:i];
-        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 150);
+        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 75);
         CommentCellView *commentCell = [[CommentCellView alloc] initWithFrame:frame andComment:comment];
         commentCell.frame = frame;
         [scrollView addSubview:commentCell];
@@ -167,11 +189,25 @@
 }
 
 -(NSMutableArray *) getMyComments {
-    return nil;
+    if (manager == nil) {
+        manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    }
+    
+    NSArray *array = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * FROM Comments WHERE UserID LIKE %ld", userID]];
+    NSMutableArray *comments = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [array count]; i++) {
+        NSArray *postArray = [array objectAtIndex:i];
+        CommentModel *comment = [[CommentModel alloc] initWithDBArray:postArray];
+        [comments addObject:comment];
+    }
+    
+    return comments;
 }
 
 -(void) userTappedPostCell:(id)sender {
     NSLog(@"User Tapped Post Cell");
+    
 }
 
 @end

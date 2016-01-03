@@ -7,10 +7,13 @@
 //
 
 #import "UserModel.h"
+#import "DBManager.h"
 
 @implementation UserModel {
     NSURLConnection *imageConn;
     NSURLConnection *modelConn;
+    
+    DBManager *manager;
 }
 
 @synthesize delegate;
@@ -67,23 +70,13 @@
 -(id) initWithID:(NSInteger)_ID {
     self = [super init];
     ID = _ID;
-    [self loadCounterparts];
     
-    [self loadComponents];
+    if (manager == nil) {
+        manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    }
+    NSArray *userArray = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * from users WHERE ID LIKE %ld", (long)ID]];
+    self = [self initWithDBArray:userArray];
     
-    /*profilePicSrc = profileSrc;
-    firstName = fName;
-    lastName = lName;
-    profilePic = [UIImage imageNamed:@"default.png"];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        //Run BG Task Here
-        profilePic = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicSrc]]];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            
-            //Return to main thread to update UI
-        });
-    });*/
     return self;
 }
 
@@ -92,6 +85,8 @@
 }
 
 -(void) loadComponents {
+    profilePic = [UIImage imageNamed:@"profile-pic.jpg"];
+    [self getLocalSource];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(profilePicReady)
                                                  name:profilePicSrcLocal
@@ -154,7 +149,6 @@
                    completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
                        CLPlacemark *placemark = [placemarks lastObject];
                        zipCode = [placemark.postalCode integerValue];
-                       NSLog(placemark.postalCode);
                        [delegate zipFound:self];
                        
                    }];
@@ -181,12 +175,12 @@
     if (connection == imageConn) {
         NSString *response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         profilePicSrc = response;
-        NSLog(response);
+        //NSLog(response);
         [self pushModel];
     } else if (connection == modelConn) {
         NSLog(@"Connection Complete");
         NSString *resposne = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(resposne);
+        //NSLog(resposne);
         UserModel *newUser = [[UserModel alloc] initWithJSONString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
         if (newUser.ID != ID) {
             [self copyFromUser:newUser];
@@ -230,6 +224,55 @@
     [self loadComponents];
     
     return self;
+}
+
+-(id) initWithDBArray:(NSArray *)userArray {
+    self = [super init];
+    if ([userArray count] == 1) {
+        userArray = [userArray objectAtIndex:0];
+    }
+    NSInteger pos = 0;
+    ID = [[userArray objectAtIndex:pos] integerValue];
+    pos++;
+    firstName = [userArray objectAtIndex:pos];
+    pos++;
+    lastName = [userArray objectAtIndex:pos];
+    pos++;
+    profilePicSrc = [userArray objectAtIndex:pos];
+    pos++;
+    latitude = [[userArray objectAtIndex:pos] doubleValue];
+    pos++;
+    longitude = [[userArray objectAtIndex:pos] doubleValue];
+    pos++;
+    zipCode = [[userArray objectAtIndex:pos] integerValue];
+    pos++;
+    email = [userArray objectAtIndex:pos];
+    pos++;
+    followers = [[userArray objectAtIndex:pos] integerValue];
+    pos++;
+    following = [[userArray objectAtIndex:pos] integerValue];
+    pos++;
+    gender = [userArray objectAtIndex:pos];
+    
+    [self loadComponents];
+    
+    return self;
+}
+
+-(void) getLocalSource {
+    NSArray *subStrings = [profilePicSrc componentsSeparatedByString:@"/"];
+    NSString *fileName = [subStrings lastObject];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *docPath = [paths objectAtIndex:0];
+    docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] createDirectoryAtPath:docPath withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    NSString *dataPath = [docPath stringByAppendingPathComponent:fileName];
+    
+    profilePicSrcLocal = dataPath;
 }
 
 @end

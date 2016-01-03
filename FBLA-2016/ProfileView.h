@@ -10,8 +10,10 @@
 #import "SlidingViewController.h"
 #import "PostCellView.h"
 
-@interface ProfileView : UIView <SlidingViewDelegate>
+@interface ProfileView : UIView <SlidingViewDelegate, PostCellDelegate>
 
 -(id) initWithFrame:(CGRect)frame andUser:(NSInteger)uID;
+
+@property UIViewController *parentController;
 
 @end

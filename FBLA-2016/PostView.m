@@ -14,6 +14,7 @@
 #import "CommentModel.h"
 #import "CommentCellView.h"
 #import "TagView.h"
+#import "DBManager.h"
 
 @implementation PostView {
     PostModel *post;
@@ -21,6 +22,8 @@
     UserModel *postUser;
     
     SlidingViewController *imagesContainer;
+    
+    DBManager *manager;
 }
 
 -(id) initWithFrame:(CGRect)frame andPost:(PostModel *)postModel {
@@ -32,7 +35,9 @@
 }
 
 -(void) loadComponents {
+    float widthTest = self.frame.size.width;
     postUser = post.user;
+    self.clipsToBounds = NO;
     
     NSInteger yPos = 0;
     
@@ -59,6 +64,7 @@
     imagesContainer = [[SlidingViewController alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, self.frame.size.width) andDelegate:self];
     [self addSubview:imagesContainer];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:imagesContainer action:@selector(swiped:)];
+    pan.cancelsTouchesInView = NO;
     [imagesContainer addGestureRecognizer:pan];
     
     yPos += imagesContainer.frame.size.height;
@@ -74,38 +80,67 @@
     yPos += ratingView.frame.size.height;
     
     UIView *commentsView = [self commentsViewWithLength:(self.frame.size.height - yPos)];
+    commentsView.frame = CGRectMake(0, yPos, self.frame.size.width, 100);
     [self addSubview:commentsView];
+    [self bringSubviewToFront:commentsView];
     
     yPos += commentsView.frame.size.height;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTest:)];
+    [imagesContainer addGestureRecognizer:tap];
+    
+    commentsView.userInteractionEnabled = YES;
+}
+
+-(void) tapTest:(UITapGestureRecognizer *)tap {
+    NSLog(@"Tap Test");
 }
 
 -(UIView *) commentsViewWithLength:(float)length {
     NSMutableArray *comments = [self getMyComments];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, length)];
+    float height = self.frame.size.height;
+    float yPosA = height - length;
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, yPosA, self.frame.size.width, length)];
+    scrollView.clipsToBounds = NO;
     
     float yPos = 8;
     
     for (int i = 0; i < [comments count]; i++) {
         CommentModel *comment = [comments objectAtIndex:i];
-        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 150);
+        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 75);
         CommentCellView *commentCell = [[CommentCellView alloc] initWithFrame:frame andComment:comment];
         commentCell.frame = frame;
         [scrollView addSubview:commentCell];
         yPos += 8 + commentCell.frame.size.height;
     }
     
-    CommentCellView *newComment = [[CommentCellView alloc] initForNewCommentWithFrame:CGRectMake(0, yPos, self.frame.size.width, 150)];
+    CommentCellView *newComment = [[CommentCellView alloc] initForNewCommentWithFrame:CGRectMake(0, yPos, self.frame.size.width, 100)];
     yPos += 8 + newComment.frame.size.height;
     
     [scrollView addSubview:newComment];
     scrollView.contentSize = CGSizeMake(self.frame.size.width, yPos);
+    [scrollView bringSubviewToFront:newComment];
     
     return scrollView;
 }
 
 -(NSMutableArray *) getMyComments {
-    return nil;
+    if (manager == nil) {
+        manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    }
+    
+    NSArray *array = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * FROM Comments WHERE PostID LIKE %ld", post.ID]];
+    
+    NSMutableArray *comments = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [array count]; i++) {
+        NSArray *commentArray = [array objectAtIndex:i];
+        CommentModel *comment = [[CommentModel alloc] initWithDBArray:commentArray];
+        [comments addObject:comment];
+    }
+    
+    return comments;
 }
 
 -(UIView *) viewForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {

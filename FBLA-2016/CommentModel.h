@@ -22,4 +22,6 @@
 
 @property NSString *comment;
 
+-(id) initWithDBArray:(NSArray *)array;
+
 @end

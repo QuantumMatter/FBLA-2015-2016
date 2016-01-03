@@ -11,6 +11,9 @@
 #import "SignInMenuView.h"
 #import "UserModel.h"
 
+#import "PostCellView.h"
+#import "PostModel.h"
+
 @interface IntroductionViewController ()
 
 @end

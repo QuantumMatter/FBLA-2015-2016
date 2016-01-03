@@ -9,13 +9,18 @@
 #import "ImagePostModel.h"
 #import "TagModel.h"
 #import "TagIconView.h"
+#import "DBManager.h"
+#import "ImagePostView.h"
 
-@implementation ImagePostModel
+@implementation ImagePostModel {
+    DBManager *manager;
+}
 
 @synthesize ID;
 @synthesize intType;
 @synthesize type;
 @synthesize images;
+@synthesize imageSources;
 @synthesize postID;
 @synthesize post;
 @synthesize view;
@@ -23,95 +28,111 @@
 -(id) initWithID:(NSInteger)_ID {
     self = [super init];
     ID = _ID;
-    [self loadCounterparts];
-    return self;
-}
-
--(id) initWithID:(NSInteger)_ID andFrame:(CGRect)frame {
-    self = [self initWithID:_ID];
-    [self loadComponents:frame];
-    return self;
-}
-
--(void) loadCounterparts {
     
+    return self;
 }
 
--(void) loadComponents:(CGRect)frame {
-    view = [[UIView alloc] initWithFrame:frame];
-    switch (type) {
-        case onePic:
-            [self loadOnePic];
+-(id) initWithDBArray:(NSArray *)array {
+    self = [super init];
+    
+    if ([array count] == 1) {
+        array = [array objectAtIndex:0];
+    }
+    
+    ID = [[array objectAtIndex:0] integerValue];
+    intType = [[array objectAtIndex:1] integerValue];
+    switch (intType) {
+        case 1:
+            type = onePic;
             break;
             
-        case twoPic:
-            [self loadTwoPic];
+        case 2:
+            type = twoPic;
             break;
-        
-        case threePic:
-            [self loadThreePic];
+            
+        case 3:
+            type = threePic;
             break;
             
         default:
             break;
     }
-    [self loadTags];
+    
+    if (imageSources == nil) {
+        imageSources = [[NSMutableArray alloc] init];
+    }
+    [imageSources addObject:[array objectAtIndex:2]];
+    
+    postID = [[array objectAtIndex:3] integerValue];
+    
+    [self loadComponents];
+    
+    return self;
 }
 
--(void) loadOnePic {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:view.frame];
-    imageView.image = [images objectAtIndex:0];
-    [view addSubview:imageView];
-}
-
--(void) loadTwoPic {
-    float width = view.frame.size.width;
-    float height = view.frame.size.height;
+-(void) loadComponents {
+    if (images == nil) {
+        images = [[NSMutableArray alloc] init];
+    }
     
-    float halfWidth = width / 2;
-    float halfHeight = height / 2;
+    [images addObject:[UIImage imageNamed:@"default.png"]];
     
-    UIImageView *first = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, halfWidth, height)];
-    first.image = [images objectAtIndex:0];
-    [view addSubview:first];
-    
-    UIImageView *second = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, 0, halfWidth, height)];
-    second.image = [images objectAtIndex:1];
-    [view addSubview:second];
-}
-
--(void) loadThreePic {
-    float width = view.frame.size.width;
-    float height = view.frame.size.height;
-    
-    float halfWidth = width / 2;
-    float halfHeight = height / 2;
-    
-    UIImageView *first = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, halfWidth, height)];
-    first.image = [images objectAtIndex:0];
-    [view addSubview:first];
-    
-    UIImageView *second = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, 0, halfWidth, halfHeight)];
-    second.image = [images objectAtIndex:1];
-    [view addSubview:second];
-    
-    UIImageView *third = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, halfHeight, halfWidth, halfHeight)];
-    third.image = [images objectAtIndex:2];
-    [view addSubview:third];
-}
-
--(void) loadTags {
-    NSMutableArray *tags = [self getMyTags];
-    for (int i = 0; i < [tags count]; i++) {
-        TagModel *tag = [tags objectAtIndex:i];
-        TagIconView *tagIcon = [[TagIconView alloc] initWIthNumber:tag.number];
-        tagIcon.center = CGPointMake(view.frame.size.width * tag.xPos, view.frame.size.height * tag.yPos);
-        [view addSubview:tagIcon];
+    for (int i = 0; i < [imageSources count]; i++) {
+        NSString *string = [imageSources objectAtIndex:i];
+        NSArray *subStrings = [string componentsSeparatedByString:@"/"];
+        NSString *fileName = [subStrings lastObject];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+        NSString *docPath = [paths objectAtIndex:0];
+        docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+        
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:docPath withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        NSString *dataPath = [docPath stringByAppendingPathComponent:fileName];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(imageReady:)
+                                                     name:dataPath
+                                                   object:nil];
     }
 }
 
--(NSMutableArray *) getMyTags {
-    return nil;
+-(void) imageReady:(NSNotification *)notif {
+    NSString *source = notif.name;
+    [images addObject:[UIImage imageWithContentsOfFile:source]];
+}
+
+-(void) addImagePost:(ImagePostModel *)model {
+    NSMutableArray *newImageSrcs = model.imageSources;
+    
+    for (int i = 0; i < [newImageSrcs count]; i++) {
+        [imageSources addObject:[newImageSrcs objectAtIndex:i]];
+        
+        NSString *string = [newImageSrcs objectAtIndex:i];
+        NSArray *subStrings = [string componentsSeparatedByString:@"/"];
+        NSString *fileName = [subStrings lastObject];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+        NSString *docPath = [paths objectAtIndex:0];
+        docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+        
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:docPath withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        NSString *dataPath = [docPath stringByAppendingPathComponent:fileName];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(imageReady:)
+                                                     name:dataPath
+                                                   object:nil];
+    }
+    
+    NSMutableArray *newImages = model.images;
+    for (int i = 0; i < [newImages count]; i++) {
+        [images addObject:[newImages objectAtIndex:i]];
+    }
+    
+    ID = -2;
+    
 }
 
 @end
