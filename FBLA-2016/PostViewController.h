@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ImagePostView.h"
 
-@interface PostViewController : UIViewController <ImagePostDelegate>
+@interface PostViewController : UIViewController <ImagePostDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @end

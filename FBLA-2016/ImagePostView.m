@@ -15,6 +15,7 @@
 }
 
 @synthesize delegate;
+@synthesize imageViews;
 
 -(id) initWithFrame:(CGRect)frame andModel:(ImagePostModel *)model {
     self = [[[NSBundle mainBundle] loadNibNamed:@"ImagePostView" owner:self options:nil] objectAtIndex:0];
@@ -37,6 +38,8 @@
 }
 
 -(void) loadComponents {
+    imageViews = [[NSMutableArray alloc] init];
+    
     switch (post.type) {
         case onePic:
             [self loadOnePic];
@@ -54,12 +57,27 @@
             break;
     }
     [self loadTags];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTapped:)];
+    //[self addGestureRecognizer:tap];
+}
+
+-(void) userTapped:(UITapGestureRecognizer *)tap {
+    for (int i = 0; i < [imageViews count]; i++) {
+        UIImageView *imageView = [imageViews objectAtIndex:i];
+        CGPoint loc = [tap locationInView:imageView];
+        BOOL OK = CGRectContainsPoint(imageView.frame, loc);
+        if (OK) {
+            [delegate userSelectedImage:imageView];
+        }
+    }
 }
 
 -(void) loadOnePic {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.frame];
     imageView.image = [post.images objectAtIndex:0];
     [self addSubview:imageView];
+    [imageViews addObject:imageView];
 }
 
 -(void) loadTwoPic {
@@ -72,10 +90,12 @@
     UIImageView *first = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, halfWidth, height)];
     first.image = [post.images objectAtIndex:0];
     [self addSubview:first];
+    [imageViews addObject:first];
     
     UIImageView *second = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, 0, halfWidth, height)];
     second.image = [post.images objectAtIndex:1];
     [self addSubview:second];
+    [imageViews addObject:second];
 }
 
 -(void) loadThreePic {
@@ -88,14 +108,17 @@
     UIImageView *first = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, halfWidth, height)];
     first.image = [post.images objectAtIndex:0];
     [self addSubview:first];
+    [imageViews addObject:first];
     
     UIImageView *second = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, 0, halfWidth, halfHeight)];
     second.image = [post.images objectAtIndex:1];
     [self addSubview:second];
+    [imageViews addObject:second];
     
     UIImageView *third = [[UIImageView alloc] initWithFrame:CGRectMake(halfWidth, halfHeight, halfWidth, halfHeight)];
     third.image = [post.images objectAtIndex:2];
     [self addSubview:third];
+    [imageViews addObject:third];
 }
 
 -(void) loadTags {
@@ -110,6 +133,18 @@
 
 -(NSMutableArray *) getMyTags {
     return [[NSMutableArray alloc] init];
+}
+
+-(UIImageView *)imageForTap:(UITapGestureRecognizer *)tap {
+    for (int i = 0; i < [imageViews count]; i++) {
+        UIImageView *imageView = [imageViews objectAtIndex:i];
+        CGPoint loc = [tap locationInView:imageView];
+        BOOL OK = CGRectContainsPoint(imageView.frame, loc);
+        if (OK) {
+            return imageView;
+        }
+    }
+    return nil;
 }
 
 @end

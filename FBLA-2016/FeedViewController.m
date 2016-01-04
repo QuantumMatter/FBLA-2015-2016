@@ -10,6 +10,7 @@
 #import "DBManager.h"
 #import "PostModel.h"
 #import "PostView.h"
+#import "SlidingViewController.h"
 
 @interface FeedViewController ()
 
@@ -18,29 +19,41 @@
 @implementation FeedViewController {
     DBManager *manager;
     
-    UIScrollView *postScroll;
+    NSMutableArray *views;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    postScroll = [self loadPostViews];
-    postScroll.clipsToBounds = NO;
-    self.view.clipsToBounds = NO;
-    [self.view addSubview:postScroll];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(raiseViewForKeyboard)
+                                                 name:@"UIKeyboardWillShowNotification"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(lowerViewForKeyboard)
+                                                 name:@"UIKeyboardWillHideNotification"
+                                               object:nil];
+    
+    [self loadPostViews];
+    SlidingViewController *slidingView = [[SlidingViewController alloc] initWithFrame:self.view.frame andDelegate:self];
+    [self.view addSubview:slidingView];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:slidingView action:@selector(swiped:)];
+    [self.view addGestureRecognizer:pan];
     
     [self dontSwallow:self.view];
 }
 
--(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    CGPoint point = [gestureRecognizer locationInView:postScroll];
-    float yPos = postScroll.contentSize.height - point.y;
-    
-    if (yPos < 50) {
-        return NO;
-    } else {
-        return YES;
-    }
+-(NSString *) titleForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {
+    return @" ";
+}
+
+-(UIView *) viewForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {
+    return [views objectAtIndex:index];
+}
+
+-(NSInteger) numberOfViewsInSlidingView:(UIView *)slidingView {
+    return [views count];
 }
 
 -(void) dontSwallow:(UIView *)view {
@@ -80,19 +93,18 @@
     // Dispose of any resources that can be recreated.
 }
 
--(UIScrollView *) loadPostViews {
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+-(void) loadPostViews {
     NSMutableArray *posts = [self getMyPosts];
     
-    NSMutableArray *postViews = [[NSMutableArray alloc] init];
+    views = [[NSMutableArray alloc] init];
     for (int i = 0; i < [posts count]; i++) {
         PostModel *post = [posts objectAtIndex:i];
-        PostView *postView = [[PostView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width) andPost:post];
-        [postViews addObject:postView];
-        scrollView.contentSize = CGSizeMake((i+1) * self.view.frame.size.width, self.view.frame.size.height);
-        [scrollView addSubview:postView];
+        CGRect interPostFrame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height); //self.view.frame;
+        CGRect postFrame = CGRectMake(i * self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.width);
+        PostView *postView = [[PostView alloc] initWithFrame:interPostFrame andPost:post];
+        postView.frame = postFrame;
+        [views addObject:postView];
     }
-    return scrollView;
 }
 
 -(NSMutableArray *) getMyPosts {
@@ -107,6 +119,19 @@
         [posts addObject:post];
     }
     return posts;
+}
+
+-(void) raiseViewForKeyboard {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = CGRectMake(0, -(self.view.frame.size.height / 2), self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
+
+-(void) lowerViewForKeyboard {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 /*

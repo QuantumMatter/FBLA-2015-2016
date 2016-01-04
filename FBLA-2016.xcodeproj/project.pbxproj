@@ -56,6 +56,7 @@
 		ED94101C1C370C3100065168 /* fbla.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = ED94101B1C370C3100065168 /* fbla.sqlite */; };
 		EDB8C7C01C38BB6800464EAB /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = EDB8C7BF1C38BB6800464EAB /* camera.png */; };
 		EDB8C7C31C38E2B100464EAB /* DBDump.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB8C7C21C38E2B100464EAB /* DBDump.m */; };
+		EDCFB6A61C39DC7100C05792 /* LaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDCFB6A51C39DC7100C05792 /* LaunchScreenViewController.m */; };
 		EDEA48E01C34BB0E0025FDA6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */; };
 		EDEA48E41C34BB5B0025FDA6 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */; };
 		EDEA48E91C34DEE00025FDA6 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEA48E81C34DEE00025FDA6 /* PostModel.m */; };
@@ -173,6 +174,8 @@
 		EDB8C7BF1C38BB6800464EAB /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		EDB8C7C11C38E2B000464EAB /* DBDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDump.h; sourceTree = "<group>"; };
 		EDB8C7C21C38E2B100464EAB /* DBDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDump.m; sourceTree = "<group>"; };
+		EDCFB6A41C39DC7100C05792 /* LaunchScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchScreenViewController.h; sourceTree = "<group>"; };
+		EDCFB6A51C39DC7100C05792 /* LaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchScreenViewController.m; sourceTree = "<group>"; };
 		EDEA48DE1C34BB0E0025FDA6 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
 		EDEA48DF1C34BB0E0025FDA6 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		EDEA48E31C34BB5B0025FDA6 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -389,6 +392,8 @@
 				ED0F41241C348DA900570703 /* DBManager.h */,
 				ED0F41251C348DA900570703 /* DBManager.m */,
 				EDEA48F81C34E2820025FDA6 /* Views */,
+				EDCFB6A41C39DC7100C05792 /* LaunchScreenViewController.h */,
+				EDCFB6A51C39DC7100C05792 /* LaunchScreenViewController.m */,
 			);
 			path = "FBLA-2016";
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 				ED94100C1C35B85100065168 /* TagModel.m in Sources */,
 				ED7EB0681C28D4EA004BAF7A /* IntroViewController.m in Sources */,
 				EDEA48EC1C34DEF10025FDA6 /* CommentModel.m in Sources */,
+				EDCFB6A61C39DC7100C05792 /* LaunchScreenViewController.m in Sources */,
 				EDEA48F01C34E0090025FDA6 /* ImagePostModel.m in Sources */,
 				ED9410081C35B81500065168 /* TagCellView.m in Sources */,
 				EDEA49021C34E3000025FDA6 /* RatingModel.m in Sources */,

@@ -11,6 +11,20 @@
 @implementation RatingView {
     UIView *ratingContainer;
     UIView *changeRatingView;
+    
+    
+    /*IBOutlet UILabel *ovLabel;
+    IBOutlet UILabel *ovNumLabel;
+    
+    IBOutlet UILabel *appRating;
+    IBOutlet UILabel *appNumRating;
+    
+    
+    IBOutlet UILabel *proRating;
+    IBOutlet UILabel *proNumRating;
+    
+    IBOutlet UILabel *styleRating;
+    IBOutlet UILabel *styleNumRating;*/
 }
 
 @synthesize letters;
@@ -44,53 +58,53 @@
     float xInc = (self.frame.size.width - (padding * 2)) / 4;
     CGRect frame = CGRectMake(0, 0, size, size);
     
-    xPos += padding;
+    xPos += xInc;
     
     UILabel *ovLabel = [[UILabel alloc] initWithFrame:frame];
     ovLabel.text = @"O";
     ovLabel.center = CGPointMake(xPos - (size / 2), yPos);
-    [ratingContainer addSubview:ovLabel];
+    [self addSubview:ovLabel];
     
     UILabel *ovNumLabel = [[UILabel alloc] initWithFrame:frame];
     ovNumLabel.text = [NSString stringWithFormat:@"%ld", (long) rate.overallRating];
     ovNumLabel.center = CGPointMake(xPos + (size / 2), yPos);
-    [ratingContainer addSubview:ovNumLabel];
+    [self addSubview:ovNumLabel];
     
     xPos += xInc;
     
     UILabel *proLabel = [[UILabel alloc] initWithFrame:frame];
     proLabel.text = @"P";
     proLabel.center = CGPointMake(xPos - (size / 2), yPos);
-    [ratingContainer addSubview:proLabel];
+    [self addSubview:proLabel];
     
     UILabel *proNumLabel = [[UILabel alloc] initWithFrame:frame];
     proNumLabel.text = [NSString stringWithFormat:@"%ld", (long) rate.proRating];
     proNumLabel.center = CGPointMake(xPos + (size / 2), yPos);
-    [ratingContainer addSubview:proNumLabel];
+    [self addSubview:proNumLabel];
     
     xPos += xInc;
     
     UILabel *appRating = [[UILabel alloc] initWithFrame:frame];
-    appRating.text = @"P";
+    appRating.text = @"A";
     appRating.center = CGPointMake(xPos - (size / 2), yPos);
     [self addSubview:appRating];
     
     UILabel *appNumRating = [[UILabel alloc] initWithFrame:frame];
     appNumRating.text = [NSString stringWithFormat:@"%ld", (long) rate.appRating];
     appNumRating.center = CGPointMake(xPos + (size / 2), yPos);
-    [ratingContainer addSubview:appNumRating];
+    [self addSubview:appNumRating];
     
     xPos += xInc;
     
     UILabel *styleRating = [[UILabel alloc] initWithFrame:frame];
-    styleRating.text = @"P";
+    styleRating.text = @"S";
     styleRating.center = CGPointMake(xPos - (size / 2), yPos);
-    [ratingContainer addSubview:styleRating];
+    [self addSubview:styleRating];
     
     UILabel *styleNumRating = [[UILabel alloc] initWithFrame:frame];
     styleNumRating.text = [NSString stringWithFormat:@"%ld", (long) rate.styleRating];
     styleNumRating.center = CGPointMake(xPos + (size / 2), yPos);
-    [ratingContainer addSubview:styleNumRating];
+    [self addSubview:styleNumRating];
 }
 
 -(void) userTapped:(UITapGestureRecognizer *)tap {

@@ -256,7 +256,7 @@
     if (buttonIndex == 2) {
         return;
     }
-    UIImagePickerControllerSourceType *type;
+    UIImagePickerControllerSourceType type;
     if (buttonIndex == 1) {
         type = UIImagePickerControllerSourceTypePhotoLibrary;
     } else if (buttonIndex == 0) {

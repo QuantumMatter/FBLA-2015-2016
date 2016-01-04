@@ -75,7 +75,7 @@
         images = [[NSMutableArray alloc] init];
     }
     
-    [images addObject:[UIImage imageNamed:@"default.png"]];
+    //[images addObject:[UIImage imageNamed:@"default.png"]];
     
     for (int i = 0; i < [imageSources count]; i++) {
         NSString *string = [imageSources objectAtIndex:i];
@@ -90,6 +90,13 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:docPath withIntermediateDirectories:YES attributes:nil error:&error];
         
         NSString *dataPath = [docPath stringByAppendingPathComponent:fileName];
+        
+        UIImage *image = [UIImage imageWithContentsOfFile:dataPath];
+        if (image == nil) {
+            image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[imageSources objectAtIndex:0]]]];
+        }
+        [images addObject:image];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(imageReady:)
                                                      name:dataPath

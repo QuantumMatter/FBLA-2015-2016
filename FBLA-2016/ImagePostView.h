@@ -23,4 +23,8 @@
 
 @property id<ImagePostDelegate> delegate;
 
+-(UIImageView *) imageForTap:(UITapGestureRecognizer *)tap;
+
+@property NSMutableArray *imageViews;
+
 @end

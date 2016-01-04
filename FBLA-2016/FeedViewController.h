@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlidingViewController.h"
 
-@interface FeedViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface FeedViewController : UIViewController <UIGestureRecognizerDelegate, SlidingViewDelegate>
 
 @end

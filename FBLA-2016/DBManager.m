@@ -151,7 +151,10 @@
                 }
                 else {
                     // If could not execute the query show the error message on the debugger.
-                    NSLog(@"DB Error: %s", sqlite3_errmsg(sqlite3Database));
+                    NSString *errorMsg = [NSString stringWithFormat:@"DB Error: %s", sqlite3_errmsg(sqlite3Database)];
+                    if (![errorMsg isEqualToString:@"DB Error: unknown error"]) {
+                        NSLog(errorMsg);
+                    }
                 }
             }
         }

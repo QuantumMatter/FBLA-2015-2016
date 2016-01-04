@@ -23,4 +23,6 @@
 
 -(void) pushToServer;
 
+-(id) initWithDBArray:(NSArray *)array;
+
 @end

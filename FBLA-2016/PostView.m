@@ -24,6 +24,8 @@
     SlidingViewController *imagesContainer;
     
     DBManager *manager;
+    
+    UIScrollView *scrollView;
 }
 
 -(id) initWithFrame:(CGRect)frame andPost:(PostModel *)postModel {
@@ -37,7 +39,11 @@
 -(void) loadComponents {
     float widthTest = self.frame.size.width;
     postUser = post.user;
-    self.clipsToBounds = NO;
+    self.clipsToBounds = YES;
+    
+    scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+    [self addSubview:scrollView];
+    scrollView.clipsToBounds = YES;
     
     NSInteger yPos = 0;
     
@@ -58,31 +64,33 @@
     nameLabel.text = name;
     [topBar addSubview:nameLabel];
     
-    [self addSubview:topBar];
+    [scrollView addSubview:topBar];
     yPos += topBar.frame.size.height;
     
+    
     imagesContainer = [[SlidingViewController alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, self.frame.size.width) andDelegate:self];
-    [self addSubview:imagesContainer];
+    [scrollView addSubview:imagesContainer];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:imagesContainer action:@selector(swiped:)];
     pan.cancelsTouchesInView = NO;
     [imagesContainer addGestureRecognizer:pan];
     
     yPos += imagesContainer.frame.size.height;
     
-    TagView *tagView = [[TagView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 150) andPostID:post.ID];
-    [self addSubview:tagView];
+    TagView *tagView = [[TagView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 0.15 * self.frame.size.width) andPostID:post.ID];
+    [scrollView addSubview:tagView];
     
     yPos += tagView.frame.size.height;
     
-    RatingView *ratingView = [[RatingView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 0.15 * self.frame.size.width)];
-    [self addSubview:ratingView];
+    RatingModel *rating = [self getRating];
+    RatingView *ratingView = [[RatingView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 0.15 * self.frame.size.width) andRating:rating];
+    [scrollView addSubview:ratingView];
     
     yPos += ratingView.frame.size.height;
     
     UIView *commentsView = [self commentsViewWithLength:(self.frame.size.height - yPos)];
     commentsView.frame = CGRectMake(0, yPos, self.frame.size.width, 100);
-    [self addSubview:commentsView];
-    [self bringSubviewToFront:commentsView];
+    [scrollView addSubview:commentsView];
+    [scrollView bringSubviewToFront:commentsView];
     
     yPos += commentsView.frame.size.height;
     
@@ -90,6 +98,8 @@
     [imagesContainer addGestureRecognizer:tap];
     
     commentsView.userInteractionEnabled = YES;
+    
+    yPos = commentsView.frame.origin.y + commentsView.frame.size.height;
 }
 
 -(void) tapTest:(UITapGestureRecognizer *)tap {
@@ -106,13 +116,15 @@
     
     float yPos = 8;
     
-    for (int i = 0; i < [comments count]; i++) {
-        CommentModel *comment = [comments objectAtIndex:i];
-        CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 75);
-        CommentCellView *commentCell = [[CommentCellView alloc] initWithFrame:frame andComment:comment];
-        commentCell.frame = frame;
-        [scrollView addSubview:commentCell];
-        yPos += 8 + commentCell.frame.size.height;
+    if (comments != nil) {
+        for (int i = 0; i < [comments count]; i++) {
+            CommentModel *comment = [comments objectAtIndex:i];
+            CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 75);
+            CommentCellView *commentCell = [[CommentCellView alloc] initWithFrame:frame andComment:comment];
+            commentCell.frame = frame;
+            [scrollView addSubview:commentCell];
+            yPos += 8 + commentCell.frame.size.height;
+        }
     }
     
     CommentCellView *newComment = [[CommentCellView alloc] initForNewCommentWithFrame:CGRectMake(0, yPos, self.frame.size.width, 100)];
@@ -134,6 +146,10 @@
     
     NSMutableArray *comments = [[NSMutableArray alloc] init];
     
+    if ([array count] == 0) {
+        return nil;
+    }
+    
     for (int i = 0; i < [array count]; i++) {
         NSArray *commentArray = [array objectAtIndex:i];
         CommentModel *comment = [[CommentModel alloc] initWithDBArray:commentArray];
@@ -141,6 +157,20 @@
     }
     
     return comments;
+}
+
+-(RatingModel *) getRating {
+    if (manager == nil) {
+        manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    }
+    
+    NSArray *array = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * from ratings WHERE PostID Like %ld", (long)post.ID]];
+    if ([array count] == 0) {
+        return [[RatingModel alloc] init];
+    }
+    NSArray *firstRatingArray = [array objectAtIndex:0];
+    RatingModel *rating = [[RatingModel alloc] initWithDBArray:firstRatingArray];
+    return rating;
 }
 
 -(UIView *) viewForIndex:(NSInteger)index forSlidingView:(UIView *)slidingView {

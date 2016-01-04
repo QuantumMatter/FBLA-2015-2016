@@ -215,7 +215,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Cno-lZ-tPo"/>
+                    <navigationItem key="navigationItem" id="Cno-lZ-tPo">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="5P4-nU-emg">
+                            <connections>
+                                <action selector="cancelPressed:" destination="l8u-Jj-tYo" id="n0a-Su-F1R"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="NVI-16-UJo">
+                            <connections>
+                                <action selector="postPressed:" destination="l8u-Jj-tYo" id="XvN-Lg-h0F"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1q-jF-X6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

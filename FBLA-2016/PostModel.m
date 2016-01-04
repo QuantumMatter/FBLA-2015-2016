@@ -84,17 +84,35 @@
     if (manager == nil) {
         manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
     }
-    
-    NSArray *array = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * FROM ImagePosts WHERE PostID LIKE %ld", ID]];
-    
     NSMutableArray *imagePosts = [[NSMutableArray alloc] init];
+    NSArray *array = [manager loadDataFromDB:@"SELECT * FROM imageposts"];
+    
     for (int i = 0; i < [array count]; i++) {
-        NSArray *imagePostArray = [array objectAtIndex:i];
-        ImagePostModel *imagePost = [[ImagePostModel alloc] initWithDBArray:imagePostArray];
-        [imagePosts addObject:imagePost];
+        NSArray *dbArray = [array objectAtIndex:i];
+        ImagePostModel *model = [[ImagePostModel alloc] initWithDBArray:dbArray];
+        if (model.postID == ID) {
+            [imagePosts addObject:model];
+        }
     }
     
     return imagePosts;
+}
+
+-(id) initWithDBData:(NSData *)data {
+    self = [super init];
+    
+    NSError *error;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:kNilOptions
+                                                           error:&error];
+    
+    ID = [[dict objectForKey:@"ID"] integerValue];
+    userID = [[dict objectForKey:@"UserID"] integerValue];
+    datePosted = [dict objectForKey:@"DatePosted"];
+    
+    [self loadComponents];
+    
+    return self;
 }
 
 @end

@@ -7,16 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "DBDump.h"
 
 @interface AppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate {
+    DBDump *dbHandler;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    dbHandler = [[DBDump alloc] initWithInterval:60];
+    
     return YES;
 }
 

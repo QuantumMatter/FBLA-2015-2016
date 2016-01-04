@@ -14,6 +14,8 @@
     NSURLConnection *modelConn;
     
     DBManager *manager;
+    
+    NSString *docPath;
 }
 
 @synthesize delegate;
@@ -74,6 +76,7 @@
     if (manager == nil) {
         manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
     }
+    NSArray *testArray = [manager loadDataFromDB:@"SELECT * FROM users"];
     NSArray *userArray = [manager loadDataFromDB:[NSString stringWithFormat:@"SELECT * from users WHERE ID LIKE %ld", (long)ID]];
     self = [self initWithDBArray:userArray];
     
@@ -85,15 +88,29 @@
 }
 
 -(void) loadComponents {
-    profilePic = [UIImage imageNamed:@"profile-pic.jpg"];
-    [self getLocalSource];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    docPath = [paths objectAtIndex:0];
+    docPath = [docPath stringByAppendingPathComponent:@"FBLA Users"];
+    NSString *fileName = [self getFileName:profilePicSrc];
+    NSString *path = [docPath stringByAppendingPathComponent:fileName];
+    profilePicSrcLocal = path;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(profilePicReady)
                                                  name:profilePicSrcLocal
                                                object:nil];
+    profilePic = [UIImage imageWithContentsOfFile:profilePicSrcLocal];
+    if (profilePic == nil) {
+        profilePic = [UIImage imageNamed:@"profile-pic.jpg"];
+    }
+}
+
+-(NSString *) getFileName:(NSString *)url {
+    NSArray *components = [url componentsSeparatedByString:@"/"];
+    return [components lastObject];
 }
 
 -(void) profilePicReady {
+    NSLog(@"Received Profile Pic");
     profilePic = [UIImage imageWithContentsOfFile:profilePicSrcLocal];
 }
 
@@ -228,6 +245,9 @@
 
 -(id) initWithDBArray:(NSArray *)userArray {
     self = [super init];
+    if ([userArray count] == 0) {
+        return self;
+    }
     if ([userArray count] == 1) {
         userArray = [userArray objectAtIndex:0];
     }

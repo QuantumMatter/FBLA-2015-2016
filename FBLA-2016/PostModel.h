@@ -29,4 +29,6 @@
 
 -(id) initWithPostArray:(NSArray *)array;
 
+-(id) initWithDBData:(NSData *)data;
+
 @end

@@ -10,9 +10,7 @@
 #import "SlidingViewController.h"
 #import "SignInMenuView.h"
 #import "UserModel.h"
-
-#import "PostCellView.h"
-#import "PostModel.h"
+#import "DBManager.h"
 
 @interface IntroductionViewController ()
 
@@ -27,6 +25,8 @@
     NSArray *introViews;
     
     UserModel *currUser;
+    
+    NSTimer *dbTimer;
 }
 
 #define kDataKey        @"Data"
@@ -37,9 +37,11 @@
     
     currUser = [self data];
     if (currUser != nil) {
-        NSLog(@"User Already Exists");
-        [self performSegueWithIdentifier:@"presentHome" sender:self];
-        return;
+        dbTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                            target:self
+                                                          selector:@selector(checkDB)
+                                                          userInfo:nil
+                                                           repeats:YES];
     }
     
     introViews = [[NSBundle mainBundle] loadNibNamed:@"IntroViews" owner:self options:nil];
@@ -59,6 +61,17 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     if (currUser != nil) {
+        
+    }
+}
+
+-(void) checkDB {
+    DBManager *manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    NSArray *testArray = [manager loadDataFromDB:@"SELECT * FROM users"];
+    if ([testArray count] == 0) {
+        return;
+    } else {
+        [dbTimer invalidate];
         [self performSegueWithIdentifier:@"presentHome" sender:self];
     }
 }
