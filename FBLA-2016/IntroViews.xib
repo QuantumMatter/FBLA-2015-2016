@@ -17,8 +17,29 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="S4l-vt-hqL">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOCAL POINT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5C-AT-tOE">
+                    <rect key="frame" x="8" y="70" width="143" height="103"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WE FOCUS ON YOU SO YOUR OUTFIT CAN BE ON POINT" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9x-9e-hh3">
+                    <rect key="frame" x="8" y="190" width="143" height="88"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="S4l-vt-hqL" secondAttribute="bottom" id="4g6-A8-A2f"/>
+                <constraint firstItem="S4l-vt-hqL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BAZ-Oe-m3T"/>
+                <constraint firstItem="S4l-vt-hqL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ICd-30-Dtj"/>
+                <constraint firstAttribute="trailing" secondItem="S4l-vt-hqL" secondAttribute="trailing" id="bfp-QV-dtc"/>
+            </constraints>
             <point key="canvasLocation" x="484" y="428"/>
         </view>
         <view contentMode="scaleToFill" id="FLe-Sc-j6c">
@@ -31,8 +52,27 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro02.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qCP-uo-7HU">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TAKE A PEEK AT WHAT PEOPLE ARE WEARING AROUND YOU" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ry-04-amU">
+                    <rect key="frame" x="8" y="70" width="182" height="113"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.98823529409999999" green="0.34509803919999998" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="qCP-uo-7HU" firstAttribute="leading" secondItem="FLe-Sc-j6c" secondAttribute="leading" id="N1s-jN-iqh"/>
+                <constraint firstItem="qCP-uo-7HU" firstAttribute="leading" secondItem="FLe-Sc-j6c" secondAttribute="leading" id="SGb-vg-CdR"/>
+                <constraint firstAttribute="bottom" secondItem="qCP-uo-7HU" secondAttribute="bottom" id="Y2u-su-0qA"/>
+                <constraint firstAttribute="bottom" secondItem="qCP-uo-7HU" secondAttribute="bottom" id="b6A-UE-hpF"/>
+                <constraint firstItem="qCP-uo-7HU" firstAttribute="top" secondItem="FLe-Sc-j6c" secondAttribute="top" id="g5e-eX-InC"/>
+                <constraint firstAttribute="trailing" secondItem="qCP-uo-7HU" secondAttribute="trailing" id="tfj-T4-Ifx"/>
+                <constraint firstItem="qCP-uo-7HU" firstAttribute="top" secondItem="FLe-Sc-j6c" secondAttribute="top" id="zq7-8I-xxF"/>
+            </constraints>
             <point key="canvasLocation" x="-226" y="288"/>
         </view>
         <view contentMode="scaleToFill" id="G7o-SF-oX2">
@@ -45,8 +85,23 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro03.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0JZ-Zg-cd0">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SIGN UP NOW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSb-Pr-ifv">
+                    <rect key="frame" x="8" y="70" width="207" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.25360691260000001" green="1" blue="0.109611714" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="0JZ-Zg-cd0" firstAttribute="leading" secondItem="G7o-SF-oX2" secondAttribute="leading" id="Gl1-U5-lWP"/>
+                <constraint firstItem="0JZ-Zg-cd0" firstAttribute="top" secondItem="G7o-SF-oX2" secondAttribute="top" id="aPw-d6-Z7U"/>
+                <constraint firstAttribute="trailing" secondItem="0JZ-Zg-cd0" secondAttribute="trailing" id="cWY-NI-iOV"/>
+                <constraint firstAttribute="bottom" secondItem="0JZ-Zg-cd0" secondAttribute="bottom" id="poY-Zh-NJO"/>
+            </constraints>
         </view>
         <view contentMode="scaleToFill" id="iN9-8y-FMH">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -63,4 +118,9 @@
             <point key="canvasLocation" x="1130" y="262"/>
         </view>
     </objects>
+    <resources>
+        <image name="intro01.jpg" width="410" height="470"/>
+        <image name="intro02.jpg" width="500" height="300"/>
+        <image name="intro03.jpg" width="565" height="310"/>
+    </resources>
 </document>

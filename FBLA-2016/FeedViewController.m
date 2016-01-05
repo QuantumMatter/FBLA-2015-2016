@@ -85,6 +85,10 @@
 }
 
 -(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer {
+    NSString *className = [NSString stringWithFormat:@"%@", [otherGestureRecognizer.view class]];
+    if ([className isEqualToString:@"RatingView"]) {
+        return NO;
+    }
     return YES;
 }
 

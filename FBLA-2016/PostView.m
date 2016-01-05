@@ -26,6 +26,10 @@
     DBManager *manager;
     
     UIScrollView *scrollView;
+    
+    CGRect tempFrame;
+    
+    RatingView *ratingView;
 }
 
 -(id) initWithFrame:(CGRect)frame andPost:(PostModel *)postModel {
@@ -82,28 +86,36 @@
     yPos += tagView.frame.size.height;
     
     RatingModel *rating = [self getRating];
-    RatingView *ratingView = [[RatingView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 0.15 * self.frame.size.width) andRating:rating];
+    ratingView = [[RatingView alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 0.15 * self.frame.size.width) andRating:rating];
     [scrollView addSubview:ratingView];
     
     yPos += ratingView.frame.size.height;
     
     UIView *commentsView = [self commentsViewWithLength:(self.frame.size.height - yPos)];
-    commentsView.frame = CGRectMake(0, yPos, self.frame.size.width, 100);
+    //commentsView.frame = CGRectMake(0, yPos, self.frame.size.width, 100);
     [scrollView addSubview:commentsView];
     [scrollView bringSubviewToFront:commentsView];
     
     yPos += commentsView.frame.size.height;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTest:)];
-    [imagesContainer addGestureRecognizer:tap];
+    [self addGestureRecognizer:tap];
+    tap.cancelsTouchesInView = NO;
     
     commentsView.userInteractionEnabled = YES;
     
     yPos = commentsView.frame.origin.y + commentsView.frame.size.height;
+    scrollView.contentSize = CGSizeMake(self.frame.size.width, yPos);
+    scrollView.canCancelContentTouches = NO;
 }
 
 -(void) tapTest:(UITapGestureRecognizer *)tap {
     NSLog(@"Tap Test");
+    CGPoint loc = [tap locationInView:ratingView];
+    if (((loc.x > 0) && (loc.x < ratingView.frame.size.width)) && ((loc.y > 0) && (loc.y < ratingView.frame.size.height))) {
+        NSLog(@"Rating View Tapped");
+        [ratingView tapped:tap];
+    }
 }
 
 -(UIView *) commentsViewWithLength:(float)length {
@@ -111,8 +123,7 @@
     
     float height = self.frame.size.height;
     float yPosA = height - length;
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, yPosA, self.frame.size.width, length)];
-    scrollView.clipsToBounds = NO;
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, yPosA, self.frame.size.width, 2000)];
     
     float yPos = 8;
     
@@ -122,19 +133,19 @@
             CGRect frame = CGRectMake(0, yPos, self.frame.size.width, 75);
             CommentCellView *commentCell = [[CommentCellView alloc] initWithFrame:frame andComment:comment];
             commentCell.frame = frame;
-            [scrollView addSubview:commentCell];
+            [contentView addSubview:commentCell];
             yPos += 8 + commentCell.frame.size.height;
         }
     }
     
-    CommentCellView *newComment = [[CommentCellView alloc] initForNewCommentWithFrame:CGRectMake(0, yPos, self.frame.size.width, 100)];
+    CommentCellView *newComment = [[CommentCellView alloc] initForNewCommentWithFrame:CGRectMake(0, yPos, self.frame.size.width, 100) withPostID:post.ID];
     yPos += 8 + newComment.frame.size.height;
+    contentView.frame = CGRectMake(0, contentView.frame.origin.y, self.frame.size.width, yPos + newComment.frame.size.height);
     
-    [scrollView addSubview:newComment];
-    scrollView.contentSize = CGSizeMake(self.frame.size.width, yPos);
-    [scrollView bringSubviewToFront:newComment];
+    [contentView addSubview:newComment];
+    [contentView bringSubviewToFront:newComment];
     
-    return scrollView;
+    return contentView;
 }
 
 -(NSMutableArray *) getMyComments {

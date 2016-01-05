@@ -13,6 +13,6 @@
 
 -(id) initWithFrame:(CGRect)frame andComment:(CommentModel *)comm;
 
--(id) initForNewCommentWithFrame:(CGRect)frame;
+-(id) initForNewCommentWithFrame:(CGRect)frame withPostID:(NSInteger)ID;
 
 @end

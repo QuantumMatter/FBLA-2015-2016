@@ -10,6 +10,6 @@
 #import "SlidingViewController.h"
 #import "UserModel.h"
 
-@interface RegisterUserViewController : UIViewController <SlidingViewDelegate>
+@interface RegisterUserViewController : UIViewController <SlidingViewDelegate, NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
 @end

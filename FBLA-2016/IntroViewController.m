@@ -22,11 +22,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.clipsToBounds = YES;
     
     nibArray = [[NSBundle mainBundle] loadNibNamed:@"IntroViews" owner:self options:nil];
+    for (int i = 0; i < [nibArray count]; i++) {
+        UIView *view = [nibArray objectAtIndex:i];
+        view.frame = self.view.frame;
+        view.clipsToBounds = YES;
+    }
     
     SlidingViewController *slidingView = [[SlidingViewController alloc] initWithFrame:self.view.frame andDelegate:self];
     [self.view addSubview:slidingView];
+    slidingView.clipsToBounds = YES;
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:slidingView action:@selector(swiped:)];
     [self.view addGestureRecognizer:pan];

@@ -9,15 +9,19 @@
 #import "TagView.h"
 #import "TagModel.h"
 #import "TagCellView.h"
+#import "DBManager.h"
 
 @implementation TagView {
     NSInteger postID;
+    
+    DBManager *manager;
 }
 
 -(id) initWithFrame:(CGRect)frame andPostID:(NSInteger)pID {
     self = [[[NSBundle mainBundle] loadNibNamed:@"TagView" owner:self options:nil] objectAtIndex:0];
     self.frame = frame;
     postID = pID;
+    [self loadComponents];
     return self;
 }
 
@@ -40,7 +44,20 @@
 }
 
 -(NSMutableArray *) getMyTags {
-    return nil;
+    if (manager == nil) {
+        manager = [[DBManager alloc] initWithDatabaseFilename:@"fbla.sqlite"];
+    }
+    NSArray *array = [manager loadDataFromDB:@"SELECT * FROM tags"];
+    
+    NSMutableArray *tags = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [array count]; i++) {
+        NSArray *tagArray = [array objectAtIndex:i];
+        TagModel *tag = [[TagModel alloc] initWithDBArray:tagArray];
+        if (tag.postID == postID) {
+            [tags addObject:tag];
+        }
+    }
+    return tags;
 }
 
 @end

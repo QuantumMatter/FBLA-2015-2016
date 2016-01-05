@@ -28,6 +28,9 @@
 		ED0F41301C349D7000570703 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F412F1C349D7000570703 /* MapViewController.m */; };
 		ED0F41331C349D7E00570703 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F41321C349D7E00570703 /* PostViewController.m */; };
 		ED0F41361C349D8800570703 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0F41351C349D8800570703 /* MeViewController.m */; };
+		ED29D5431C3B534100B55985 /* intro03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED29D5421C3B534100B55985 /* intro03.jpg */; };
+		ED29D5451C3B534900B55985 /* intro02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED29D5441C3B534900B55985 /* intro02.jpg */; };
+		ED29D5471C3B534F00B55985 /* intro01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED29D5461C3B534F00B55985 /* intro01.jpg */; };
 		ED43A7011C31B857008C2C79 /* SaveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ED43A7001C31B857008C2C79 /* SaveTest.m */; };
 		ED7EB0291C289442004BAF7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB0281C289442004BAF7A /* main.m */; };
 		ED7EB02C1C289442004BAF7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7EB02B1C289442004BAF7A /* AppDelegate.m */; };
@@ -127,6 +130,9 @@
 		ED0F41321C349D7E00570703 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		ED0F41341C349D8700570703 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		ED0F41351C349D8800570703 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		ED29D5421C3B534100B55985 /* intro03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = intro03.jpg; sourceTree = "<group>"; };
+		ED29D5441C3B534900B55985 /* intro02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = intro02.jpg; sourceTree = "<group>"; };
+		ED29D5461C3B534F00B55985 /* intro01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = intro01.jpg; sourceTree = "<group>"; };
 		ED43A6FF1C31B856008C2C79 /* SaveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTest.h; sourceTree = "<group>"; };
 		ED43A7001C31B857008C2C79 /* SaveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTest.m; sourceTree = "<group>"; };
 		ED7EB0241C289442004BAF7A /* FBLA-2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FBLA-2016.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,7 +383,9 @@
 				ED0EFE921C332A1E00C9B600 /* default.png */,
 				EDB8C7BF1C38BB6800464EAB /* camera.png */,
 				ED0EFE821C32544D00C9B600 /* profile-pic.jpg */,
-				ED0EFE7C1C3244C100C9B600 /* RegisterViews */,
+				ED29D5461C3B534F00B55985 /* intro01.jpg */,
+				ED29D5441C3B534900B55985 /* intro02.jpg */,
+				ED29D5421C3B534100B55985 /* intro03.jpg */,
 				ED7EB0691C28D739004BAF7A /* Sign In Menu */,
 				ED7EB0631C28D475004BAF7A /* IntroViews */,
 				ED7EB05D1C289AB2004BAF7A /* SlidingViewController */,
@@ -553,6 +561,7 @@
 		EDEA48F81C34E2820025FDA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ED0EFE7C1C3244C100C9B600 /* RegisterViews */,
 				EDEA490F1C34F3910025FDA6 /* Cells */,
 				ED9410131C37019600065168 /* ImagePostView */,
 				ED94100D1C35BCCB00065168 /* TagIconView */,
@@ -723,7 +732,9 @@
 				ED7EB03A1C289443004BAF7A /* LaunchScreen.storyboard in Resources */,
 				EDEA48F71C34E1B90025FDA6 /* PostCellView.xib in Resources */,
 				ED7EB0621C289AF8004BAF7A /* SlidingView.xib in Resources */,
+				ED29D5431C3B534100B55985 /* intro03.jpg in Resources */,
 				ED0EFE8C1C3326D100C9B600 /* ProfilePanelView.xib in Resources */,
+				ED29D5451C3B534900B55985 /* intro02.jpg in Resources */,
 				ED9410021C35B6FC00065168 /* TagView.xib in Resources */,
 				EDEA49081C34EC400025FDA6 /* CommentCellView.xib in Resources */,
 				ED0EFE931C332A1E00C9B600 /* default.png in Resources */,
@@ -736,6 +747,7 @@
 				ED0EFE7E1C3244EA00C9B600 /* RegisterViews.xib in Resources */,
 				EDEA48FB1C34E2DC0025FDA6 /* RatingView.xib in Resources */,
 				ED9410151C3701A600065168 /* ImagePostView.xib in Resources */,
+				ED29D5471C3B534F00B55985 /* intro01.jpg in Resources */,
 				ED7EB0351C289443004BAF7A /* Testing.storyboard in Resources */,
 				EDEA490B1C34F2920025FDA6 /* PostView.xib in Resources */,
 				ED7EB06E1C28D7D5004BAF7A /* SignInMenuView.xib in Resources */,

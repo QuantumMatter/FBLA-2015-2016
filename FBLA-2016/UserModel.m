@@ -100,7 +100,7 @@
                                                object:nil];
     profilePic = [UIImage imageWithContentsOfFile:profilePicSrcLocal];
     if (profilePic == nil) {
-        profilePic = [UIImage imageNamed:@"profile-pic.jpg"];
+        profilePic = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicSrc]]];
     }
 }
 

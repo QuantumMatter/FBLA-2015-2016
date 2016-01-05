@@ -13,6 +13,8 @@
     CommentModel *comment;
     
     UITextField *newComment;
+    
+    NSInteger postID;
 }
 
 -(id) initWithFrame:(CGRect)frame andComment:(CommentModel *)comm {
@@ -38,9 +40,11 @@
     [self addSubview:label];
 }
 
--(id) initForNewCommentWithFrame:(CGRect)frame {
+-(id) initForNewCommentWithFrame:(CGRect)frame withPostID:(NSInteger)ID {
     self = [[[NSBundle mainBundle] loadNibNamed:@"CommentCellView" owner:self options:nil] objectAtIndex:0];
     self.frame = frame;
+    
+    postID = ID;
     
     float midY = self.frame.size.height / 2;
     float xSpace = 0.15 * self.frame.size.width;
@@ -68,7 +72,26 @@
 }
 
 -(void) sendNewComment {
+    NSLog(@"Submit New Comment");
+    [self endEditing:YES];
+    NSURL *URL = [NSURL URLWithString:@"http://24.8.58.134/FocalPoint/API/CommentsAPI/"];
+    UserModel *user = [self getCurrentUser];
+    NSString *dataString = [NSString stringWithFormat:@"Comment=%@&PostID=%ld&UserID=%ld", newComment.text, (long)postID, (long)user.ID];
+    NSMutableURLRequest *request = [self postRequestFor:URL withDataString:dataString];
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:nil startImmediately:YES];
+}
+
+-(NSMutableURLRequest *) postRequestFor:(NSURL *)url withDataString:(NSString *)string {
+    NSData *postData = [string dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init ];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
     
+    return request;
 }
 
 -(UserModel *) getCurrentUser {

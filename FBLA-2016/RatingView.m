@@ -13,18 +13,17 @@
     UIView *changeRatingView;
     
     
-    /*IBOutlet UILabel *ovLabel;
-    IBOutlet UILabel *ovNumLabel;
+    UILabel *ovLabel;
+    UILabel *ovNumLabel;
     
-    IBOutlet UILabel *appRating;
-    IBOutlet UILabel *appNumRating;
+    UILabel *appRating;
+    UILabel *appNumRating;
     
+    UILabel *proLabel;
+    UILabel *proNumLabel;
     
-    IBOutlet UILabel *proRating;
-    IBOutlet UILabel *proNumRating;
-    
-    IBOutlet UILabel *styleRating;
-    IBOutlet UILabel *styleNumRating;*/
+    UILabel *styleRating;
+    UILabel *styleNumRating;
 }
 
 @synthesize letters;
@@ -45,7 +44,7 @@
 
 -(void) loadComponents {
     ratingContainer = [[UIView alloc] initWithFrame:self.frame];
-    changeRatingView = [[UIView alloc] initWithFrame:self.frame];
+    //changeRatingView = [[UIView alloc] initWithFrame:self.frame];
     [self addSubview:ratingContainer];
     
     float yPos = self.frame.size.height / 2;
@@ -60,51 +59,55 @@
     
     xPos += xInc;
     
-    UILabel *ovLabel = [[UILabel alloc] initWithFrame:frame];
+    ovLabel = [[UILabel alloc] initWithFrame:frame];
     ovLabel.text = @"O";
     ovLabel.center = CGPointMake(xPos - (size / 2), yPos);
     [self addSubview:ovLabel];
     
-    UILabel *ovNumLabel = [[UILabel alloc] initWithFrame:frame];
+    ovNumLabel = [[UILabel alloc] initWithFrame:frame];
     ovNumLabel.text = [NSString stringWithFormat:@"%ld", (long) rate.overallRating];
     ovNumLabel.center = CGPointMake(xPos + (size / 2), yPos);
     [self addSubview:ovNumLabel];
     
     xPos += xInc;
     
-    UILabel *proLabel = [[UILabel alloc] initWithFrame:frame];
+    proLabel = [[UILabel alloc] initWithFrame:frame];
     proLabel.text = @"P";
     proLabel.center = CGPointMake(xPos - (size / 2), yPos);
     [self addSubview:proLabel];
     
-    UILabel *proNumLabel = [[UILabel alloc] initWithFrame:frame];
+    proNumLabel = [[UILabel alloc] initWithFrame:frame];
     proNumLabel.text = [NSString stringWithFormat:@"%ld", (long) rate.proRating];
     proNumLabel.center = CGPointMake(xPos + (size / 2), yPos);
     [self addSubview:proNumLabel];
     
     xPos += xInc;
     
-    UILabel *appRating = [[UILabel alloc] initWithFrame:frame];
+    appRating = [[UILabel alloc] initWithFrame:frame];
     appRating.text = @"A";
     appRating.center = CGPointMake(xPos - (size / 2), yPos);
     [self addSubview:appRating];
     
-    UILabel *appNumRating = [[UILabel alloc] initWithFrame:frame];
+    appNumRating = [[UILabel alloc] initWithFrame:frame];
     appNumRating.text = [NSString stringWithFormat:@"%ld", (long) rate.appRating];
     appNumRating.center = CGPointMake(xPos + (size / 2), yPos);
     [self addSubview:appNumRating];
     
     xPos += xInc;
     
-    UILabel *styleRating = [[UILabel alloc] initWithFrame:frame];
+    styleRating = [[UILabel alloc] initWithFrame:frame];
     styleRating.text = @"S";
     styleRating.center = CGPointMake(xPos - (size / 2), yPos);
     [self addSubview:styleRating];
     
-    UILabel *styleNumRating = [[UILabel alloc] initWithFrame:frame];
+    styleNumRating = [[UILabel alloc] initWithFrame:frame];
     styleNumRating.text = [NSString stringWithFormat:@"%ld", (long) rate.styleRating];
     styleNumRating.center = CGPointMake(xPos + (size / 2), yPos);
     [self addSubview:styleNumRating];
+}
+
+-(void) tapped:(UITapGestureRecognizer *)tap {
+    [self userTapped:tap];
 }
 
 -(void) userTapped:(UITapGestureRecognizer *)tap {
@@ -132,154 +135,42 @@
     }
 }
 
--(void) ovTapped {
-    NSString *title = @"Overall";
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return NO;
+}
+
+-(void) appTapped {
+    if (changeRatingView != nil) {
+        return;
+    }
+    NSString *title = @"Appropriatness";
     CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
     UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
+    label.text = title;
     label.center = center;
     label.alpha = 0.0;
-    changeRatingView = [[UIView alloc] initWithFrame:self.frame];
+    label.textAlignment = NSTextAlignmentCenter;
+    CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    changeRatingView = [[UIView alloc] initWithFrame:frame];
     [changeRatingView addSubview:label];
-    slider = [[UISlider alloc] initWithFrame:self.frame];
+    slider = [[UISlider alloc] initWithFrame:frame];
     slider.alpha = 0.0;
     slider.maximumValue = 10;
     slider.minimumValue = 0;
     slider.value = rate.overallRating;
+    [slider.gestureRecognizers objectAtIndex:0].cancelsTouchesInView = YES;
+    [slider.gestureRecognizers objectAtIndex:0].delegate = self;
     [changeRatingView addSubview:slider];
     [self addSubview:changeRatingView];
     
     [UIView animateWithDuration:0.5
                      animations:^{
+                         for (int i = 0; i < [self.subviews count]; i++) {
+                             UIView *subView = [self.subviews objectAtIndex:i];
+                             subView.alpha = 0.0;
+                         }
                          ratingContainer.alpha = 0.0;
-                         label.alpha = 1.0;
-                     }
-                     completion:^(BOOL finished) {
-                         [ratingContainer removeFromSuperview];
-                         [UIView animateWithDuration:0.5
-                                          animations:^{
-                                              label.alpha = 0.0;
-                                              [label removeFromSuperview];
-                                              slider.alpha = 1.0;
-                                          }
-                                          completion:^(BOOL finished) {
-                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                                  rate.overallRating = slider.value;
-                                                  [self restoreRatingContainer];
-                                              });
-                                          }];
-                     }];
-}
-
--(void) restoreRatingContainer {
-    ratingContainer.alpha = 0.0;
-    [self addSubview:ratingContainer];
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         changeRatingView.alpha = 0.0;
-                         ratingContainer.alpha = 1.0;
-                     }
-                     completion:^(BOOL finished) {
-                         [changeRatingView removeFromSuperview];
-                         changeRatingView = nil;
-                     }];
-    [rate pushToServer];
-}
-
--(void) proTapped {
-    NSString *title = @"Professional";
-    CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
-    UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
-    label.center = center;
-    label.alpha = 0.0;
-    changeRatingView = [[UIView alloc] initWithFrame:self.frame];
-    [changeRatingView addSubview:label];
-    slider = [[UISlider alloc] initWithFrame:self.frame];
-    slider.alpha = 0.0;
-    slider.maximumValue = 10;
-    slider.minimumValue = 0;
-    slider.value = rate.proRating;
-    [changeRatingView addSubview:slider];
-    [self addSubview:changeRatingView];
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         ratingContainer.alpha = 0.0;
-                         label.alpha = 1.0;
-                     }
-                     completion:^(BOOL finished) {
-                         [ratingContainer removeFromSuperview];
-                         [UIView animateWithDuration:0.5
-                                          animations:^{
-                                              label.alpha = 0.0;
-                                              [label removeFromSuperview];
-                                              slider.alpha = 1.0;
-                                          }
-                                          completion:^(BOOL finished) {
-                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                                  rate.proRating = slider.value;
-                                                  [self restoreRatingContainer];
-                                              });
-                                          }];
-                     }];
-}
-
--(void) styleTapped {
-    NSString *title = @"Style";
-    CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
-    UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
-    label.center = center;
-    label.alpha = 0.0;
-    changeRatingView = [[UIView alloc] initWithFrame:self.frame];
-    [changeRatingView addSubview:label];
-    slider = [[UISlider alloc] initWithFrame:self.frame];
-    slider.alpha = 0.0;
-    slider.maximumValue = 10;
-    slider.minimumValue = 0;
-    slider.value = rate.styleRating;
-    [changeRatingView addSubview:slider];
-    [self addSubview:changeRatingView];
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         ratingContainer.alpha = 0.0;
-                         label.alpha = 1.0;
-                     }
-                     completion:^(BOOL finished) {
-                         [ratingContainer removeFromSuperview];
-                         [UIView animateWithDuration:0.5
-                                          animations:^{
-                                              label.alpha = 0.0;
-                                              [label removeFromSuperview];
-                                              slider.alpha = 1.0;
-                                          }
-                                          completion:^(BOOL finished) {
-                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                                  rate.styleRating = slider.value;
-                                                  [self restoreRatingContainer];
-                                              });
-                                          }];
-                     }];
-}
-
--(void) appTapped {
-    NSString *title = @"Appropriatness";
-    CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
-    UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
-    label.center = center;
-    label.alpha = 0.0;
-    changeRatingView = [[UIView alloc] initWithFrame:self.frame];
-    [changeRatingView addSubview:label];
-    slider = [[UISlider alloc] initWithFrame:self.frame];
-    slider.alpha = 0.0;
-    slider.maximumValue = 10;
-    slider.minimumValue = 0;
-    slider.value = rate.appRating;
-    [changeRatingView addSubview:slider];
-    [self addSubview:changeRatingView];
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         ratingContainer.alpha = 0.0;
+                         changeRatingView.alpha = 1.0;
                          label.alpha = 1.0;
                      }
                      completion:^(BOOL finished) {
@@ -293,6 +184,181 @@
                                           completion:^(BOOL finished) {
                                               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                                   rate.appRating = slider.value;
+                                                  appNumRating.text = [NSString stringWithFormat:@"%ld", (long)rate.appRating];
+                                                  [self restoreRatingContainer];
+                                              });
+                                          }];
+                     }];
+}
+
+-(void) ovTapped {
+    if (changeRatingView != nil) {
+        return;
+    }
+    NSString *title = @"Overall";
+    CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
+    UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
+    label.text = title;
+    label.center = center;
+    label.alpha = 0.0;
+    label.textAlignment = NSTextAlignmentCenter;
+    CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    changeRatingView = [[UIView alloc] initWithFrame:frame];
+    [changeRatingView addSubview:label];
+    slider = [[UISlider alloc] initWithFrame:frame];
+    slider.alpha = 0.0;
+    slider.maximumValue = 10;
+    slider.minimumValue = 0;
+    slider.value = rate.overallRating;
+    [slider.gestureRecognizers objectAtIndex:0].cancelsTouchesInView = YES;
+    [slider.gestureRecognizers objectAtIndex:0].delegate = self;
+    [changeRatingView addSubview:slider];
+    [self addSubview:changeRatingView];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         for (int i = 0; i < [self.subviews count]; i++) {
+                             UIView *subView = [self.subviews objectAtIndex:i];
+                             subView.alpha = 0.0;
+                         }
+                         ratingContainer.alpha = 0.0;
+                         changeRatingView.alpha = 1.0;
+                         label.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished) {
+                         [ratingContainer removeFromSuperview];
+                         [UIView animateWithDuration:0.5
+                                          animations:^{
+                                              label.alpha = 0.0;
+                                              [label removeFromSuperview];
+                                              slider.alpha = 1.0;
+                                          }
+                                          completion:^(BOOL finished) {
+                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                  rate.overallRating = slider.value;
+                                                  ovNumLabel.text = [NSString stringWithFormat:@"%ld", (long)rate.overallRating];
+                                                  [self restoreRatingContainer];
+                                              });
+                                          }];
+                     }];
+}
+
+-(void) restoreRatingContainer {
+    ratingContainer.alpha = 0.0;
+    [self addSubview:ratingContainer];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         for (int i = 0; i < [self.subviews count]; i++) {
+                             UIView *subView = [self.subviews objectAtIndex:i];
+                             subView.alpha = 1.0;
+                         }
+                         changeRatingView.alpha = 0.0;
+                     }
+                     completion:^(BOOL finished) {
+                         [changeRatingView removeFromSuperview];
+                         changeRatingView = nil;
+                     }];
+    [rate pushToServer];
+}
+
+-(void) proTapped {
+    if (changeRatingView != nil) {
+        return;
+    }
+    NSString *title = @"Professional";
+    CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
+    UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
+    label.text = title;
+    label.center = center;
+    label.alpha = 0.0;
+    label.textAlignment = NSTextAlignmentCenter;
+    CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    changeRatingView = [[UIView alloc] initWithFrame:frame];
+    [changeRatingView addSubview:label];
+    slider = [[UISlider alloc] initWithFrame:frame];
+    slider.alpha = 0.0;
+    slider.maximumValue = 10;
+    slider.minimumValue = 0;
+    slider.value = rate.overallRating;
+    [slider.gestureRecognizers objectAtIndex:0].cancelsTouchesInView = YES;
+    [slider.gestureRecognizers objectAtIndex:0].delegate = self;
+    [changeRatingView addSubview:slider];
+    [self addSubview:changeRatingView];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         for (int i = 0; i < [self.subviews count]; i++) {
+                             UIView *subView = [self.subviews objectAtIndex:i];
+                             subView.alpha = 0.0;
+                         }
+                         ratingContainer.alpha = 0.0;
+                         changeRatingView.alpha = 1.0;
+                         label.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished) {
+                         [ratingContainer removeFromSuperview];
+                         [UIView animateWithDuration:0.5
+                                          animations:^{
+                                              label.alpha = 0.0;
+                                              [label removeFromSuperview];
+                                              slider.alpha = 1.0;
+                                          }
+                                          completion:^(BOOL finished) {
+                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                  rate.proRating = slider.value;
+                                                  proNumLabel.text = [NSString stringWithFormat:@"%ld", (long)rate.proRating];
+                                                  [self restoreRatingContainer];
+                                              });
+                                          }];
+                     }];
+}
+
+-(void) styleTapped {
+    if (changeRatingView != nil) {
+        return;
+    }
+    NSString *title = @"Style";
+    CGPoint center = CGPointMake(self.frame.size.width / 2, self.frame.size.height /2);
+    UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
+    label.text = title;
+    label.center = center;
+    label.alpha = 0.0;
+    label.textAlignment = NSTextAlignmentCenter;
+    CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    changeRatingView = [[UIView alloc] initWithFrame:frame];
+    [changeRatingView addSubview:label];
+    slider = [[UISlider alloc] initWithFrame:frame];
+    slider.alpha = 0.0;
+    slider.maximumValue = 10;
+    slider.minimumValue = 0;
+    slider.value = rate.overallRating;
+    [slider.gestureRecognizers objectAtIndex:0].cancelsTouchesInView = YES;
+    [slider.gestureRecognizers objectAtIndex:0].delegate = self;
+    [changeRatingView addSubview:slider];
+    [self addSubview:changeRatingView];
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         for (int i = 0; i < [self.subviews count]; i++) {
+                             UIView *subView = [self.subviews objectAtIndex:i];
+                             subView.alpha = 0.0;
+                         }
+                         ratingContainer.alpha = 0.0;
+                         changeRatingView.alpha = 1.0;
+                         label.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished) {
+                         [ratingContainer removeFromSuperview];
+                         [UIView animateWithDuration:0.5
+                                          animations:^{
+                                              label.alpha = 0.0;
+                                              [label removeFromSuperview];
+                                              slider.alpha = 1.0;
+                                          }
+                                          completion:^(BOOL finished) {
+                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                  rate.styleRating = slider.value;
+                                                  styleNumRating.text = [NSString stringWithFormat:@"%ld", (long)rate.styleRating];
                                                   [self restoreRatingContainer];
                                               });
                                           }];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RatingModel.h"
 
-@interface RatingView : UIView
+@interface RatingView : UIView <UIGestureRecognizerDelegate>
 
 @property NSMutableArray *letters;
 @property NSMutableArray *icons;
@@ -20,5 +20,7 @@
 @property RatingModel *rate;
 
 -(id) initWithFrame:(CGRect)frame andRating:(RatingModel *)rat;
+
+-(void) tapped:(UITapGestureRecognizer *)tap;
 
 @end

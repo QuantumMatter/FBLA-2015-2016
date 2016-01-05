@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PostModel.h"
 
-@interface RatingModel : NSObject
+@interface RatingModel : NSObject <NSURLConnectionDataDelegate>
 
 @property NSInteger ID;
 

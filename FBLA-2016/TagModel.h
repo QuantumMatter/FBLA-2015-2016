@@ -10,6 +10,8 @@
 
 @interface TagModel : NSObject
 
+@property NSInteger ID;
+
 @property NSInteger imagePostID;
 @property NSInteger postID;
 
@@ -19,5 +21,7 @@
 @property NSInteger number;
 
 @property NSString *title;
+
+-(id) initWithDBArray:(NSArray *)array;
 
 @end

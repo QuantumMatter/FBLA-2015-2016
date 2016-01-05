@@ -30,6 +30,11 @@
     UserModel *newUser;
     
     NSString *docPath;
+    
+    NSURLConnection *uploadConn;
+    NSString *imagePath;
+    
+    NSString *password;
 }
 
 #define kDataKey        @"Data"
@@ -71,6 +76,12 @@
     newUser = [[UserModel alloc] init];
     newUser.ID = -1;
     newUser.profilePic = personalView.profilePic.image;
+    NSInteger gender = personalView.genderControl.selectedSegmentIndex;
+    if (gender == 0) {
+        newUser.gender = @"Male";
+    } else {
+        newUser.gender = @"Female";
+    }
     
     newUser.firstName = personalView.firstName.text;
     newUser.lastName = personalView.lastName.text;
@@ -78,8 +89,14 @@
     
     newUser.latitude = friendsView.location.coordinate.latitude;
     newUser.longitude = friendsView.location.coordinate.longitude;
+    newUser.zipCode = 80234;
     
-    [self user:newUser receivedNewID:0];
+    newUser.followers = 0;
+    newUser.following = 0;
+    
+    password = personalView.password.text;
+    
+    [self uploadimage:UIImageJPEGRepresentation(personalView.profilePic.image, 0.1)];
 }
 
 -(NSInteger) numberOfViewsInSlidingView:(UIView *)slidingView {
@@ -152,7 +169,7 @@
 }
 
 -(void) user:(id)sender receivedNewID:(NSInteger)newID {
-    newUser.ID = newID;
+    /*newUser.ID = newID;
     
     newUser.followers = 0;
     newUser.following = 0;
@@ -169,8 +186,61 @@
         [friend pushToServer];
     }
     
+    [self saveNewUser];*/
+    [self performSegueWithIdentifier:@"presentHome" sender:self];
+}
+
+-(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(dataString);
+    if (connection == uploadConn) {
+        NSArray *comp = [dataString componentsSeparatedByString:@"\\"];
+        imagePath = [NSString stringWithFormat:@"http://24.8.58.134/FocalPoint/Images/%@.jpg", [comp lastObject]];
+        [self uploadUser];
+    }
+}
+
+-(void) uploadUser {
+    NSString *dataString = [NSString stringWithFormat:@"Email=%@&Firstname=%@&Followers=%ld&Following=%ld&Gender=%@&LastName=%@&Latitude=%f&Longitude=%f&Password=%@&ProfilePic=%@&ZipCode=%ld", newUser.email, newUser.firstName, (long)newUser.followers, (long)newUser.following, newUser.gender, newUser.lastName, newUser.latitude, newUser.longitude, password, imagePath, (long)newUser.zipCode];
+    NSURL *URL = [NSURL URLWithString:@"http://24.8.58.134/FocalPoint/API/UsersAPI/"];
+    NSMutableURLRequest *request = [self postRequestFor:URL withDataString:dataString];
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    
     [self saveNewUser];
     [self performSegueWithIdentifier:@"presentHome" sender:self];
+}
+
+-(NSMutableURLRequest *) postRequestFor:(NSURL *)url withDataString:(NSString *)string {
+    NSData *postData = [string dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init ];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    return request;
+}
+
+-(void) uploadimage:(NSData *)imageData {
+    NSString *urlString = @"http://24.8.58.134/FocalPoint/API/Upload";
+    NSString *filename = @"filename";
+    NSMutableURLRequest *request= [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    NSMutableData *postbody = [NSMutableData data];
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@.jpg\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[NSData dataWithData:imageData]];
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:postbody];
+    
+    uploadConn = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 }
 
 /*
